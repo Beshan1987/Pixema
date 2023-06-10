@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 
 import { ReactComponent as IconFave } from '~/assets/icons/IconFave.svg';
@@ -7,10 +8,20 @@ import { ReactComponent as IconTrend } from '~/assets/icons/IconTrend.svg';
 import { NavLinks } from '~/features/navbar/navbar.constants';
 
 import menuStyle from './Menu.module.scss';
+import { MenuStyleAppearance } from './Menu.types';
 
-export const Menu = () => {
+export const Menu = ({
+  appearance = MenuStyleAppearance.desktop
+}: {
+  appearance?: MenuStyleAppearance;
+}) => {
   return (
-    <div className={menuStyle.container}>
+    <div
+      className={classNames({
+        [menuStyle.desktop]: true,
+        [menuStyle[appearance]]: true
+      })}
+    >
       {NavLinks.map((link) => (
         <NavLink
           className={({ isActive }) => (isActive ? `${menuStyle.active}` : '')}

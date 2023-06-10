@@ -6,24 +6,38 @@
   padding: 0;
   text-align: center;
   &:disabled {
-  color: var(--bg-graphite-pixema);
+    color: var(--bg-graphite-pixema);
     cursor: not-allowed;
   }
-  &:active{
-    outline: none;
-  }
-}
-
-.filter{
-  background-color: var(--bg-graphite-pixema);  
-  &:active{
+  &:active {
     outline: auto;
   }
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
 
-.user{
+.filter {
+  background-color: var(--bg-graphite-pixema);
+}
+
+.user {
   background-color: var (--primary-purple-first);
+}
+
+.chevron {
+  background-color: transparent;
+  &:hover svg path {
+    fill: var (--primary-purple-first);
+  }
+}
+
+.burger {
+  width: 50px;
+  height: 50px;
+  background: var(--primary-purple-first);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

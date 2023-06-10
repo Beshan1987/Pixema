@@ -1,0 +1,38 @@
+.desktop {
+  position: absolute;
+  max-width: 200px;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 40px;
+  color: var(--secondary-grey);
+  overflow: auto;
+  padding-top: 80px;
+  a {
+    color: inherit;
+    width: 120px;
+    svg {
+      margin-right: 23px;
+      width: 20px;
+    }
+
+    &:hover svg path {
+      fill: var(--primary-purple-second);
+    }
+    &:hover {
+      color: var(--primary-purple-second);
+      text-decoration: none;
+    }
+  }
+}
+
+.tablet {
+  right: 0;
+}
+
+.container .active {
+  color: var(--primary-purple-first);
+  svg path {
+    fill: currentColor;
+  }
+}

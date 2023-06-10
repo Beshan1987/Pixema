@@ -1,7 +1,9 @@
 export const ButtonStyleAppearance = {
   button: 'button',
   filter: 'filter',
-  user: 'user'
+  user: 'user',
+  chevron: 'chevron',
+  burger: 'burger'
 };
 
 export type ButtonStyleAppearances =

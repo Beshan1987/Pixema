@@ -1,25 +1,22 @@
-.container{
-    padding: 40px 0;
-    width: 100%;
+.container {
+  padding: 40px 0;
+  width: 100%;
 }
 
-.interactContainer{
-    gap: 20px;
-    display: flex;
-    align-items: center;
-    &:first-child{
-        flex: 1 1 40%;
-    }
-    &:last-child{
-        flex: 1 1 60%;
-        &:last-child{
-            width: 100%;
-        }
-    }
+.interactContainer {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  a:first-child {
+    flex: 1 1 30%;
+  }
+  form:nth-child(2) {
+    flex: 1 1 70%;
+  }
 }
 
-@media (max-width: 768px){
-    .interactContainer{
-        margin-left: 0;
-    }
+@media (max-width: 768px) {
+  .MenuDesktop {
+    display: none;
+  }
 }

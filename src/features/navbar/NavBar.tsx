@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Pixema } from '~/assets/icons/pixema.svg';
+import { Menu } from '~/shared/Menu/Menu';
 
-import { Menu } from './menu/Menu';
 import styleNavBar from './NavBar.module.scss';
 import { SearchBar } from './searchBar/SearchBar';
 import { PanelUser } from './userPanel/UserPanel';
@@ -10,7 +10,11 @@ import { PanelUser } from './userPanel/UserPanel';
 export const NavBar = () => {
   return (
     <>
-      <Menu />
+      <div className={styleNavBar.menu}>
+        <div className={styleNavBar.MenuDesktop}>
+          <Menu />
+        </div>
+      </div>
       <div className={styleNavBar.interactContainer}>
         <Link to="/">
           <Pixema />
