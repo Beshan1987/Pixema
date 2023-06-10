@@ -1,0 +1,30 @@
+.container{
+    position: absolute;
+    max-width: 368px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 40px;
+    color: var(--secondary-grey);
+    overflow: auto;
+    a{
+        color:inherit;
+        svg{
+            margin-right: 23px;
+            display: inline-block;
+        }
+    }
+    > svg{
+        fill: currentColor;
+        stroke: currentColor;
+    }
+}
+
+
+.container .active{
+color: var(--primary-purple-first);
+svg path{
+    fill: currentColor;
+}
+}
+

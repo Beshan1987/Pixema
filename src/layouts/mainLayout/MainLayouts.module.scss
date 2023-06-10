@@ -1,0 +1,19 @@
+.container {
+  max-width: 100%;
+  min-height: calc(100vh);
+  min-height: calc(100dvh);
+  display: flex;
+  flex-flow: column;
+padding: 40px 0 64px 0;
+  main {
+    flex: 1;
+    max-width: var(--width-content-container);
+    margin-left: 368px;
+  }
+
+  footer {
+    width: 100%;
+    max-width: var(--width-content-container);
+    justify-content: flex-start;
+  }
+}
