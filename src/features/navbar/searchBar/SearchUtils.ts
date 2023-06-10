@@ -1,7 +1,7 @@
-import { SearchState } from "./Search.types";
+import { type SearchState } from './Search.types';
 
-export function getDefaultFormValues ():SearchState {
-return {
-    t:''
-}
+export function getDefaultFormValues(): SearchState {
+  return {
+    t: ''
+  };
 }

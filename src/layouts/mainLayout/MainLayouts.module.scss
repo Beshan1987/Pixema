@@ -6,14 +6,22 @@
   flex-flow: column;
 padding: 40px 0 64px 0;
   main {
+    padding-top: 56px;
     flex: 1;
     max-width: var(--width-content-container);
     margin-left: 368px;
+    align-self:flex-start;
   }
 
   footer {
     width: 100%;
     max-width: var(--width-content-container);
-    justify-content: flex-start;
+    align-self:flex-start;
+  }
+}
+
+@media (max-width: 768px){
+  .container .main{
+        margin-left: 0
   }
 }

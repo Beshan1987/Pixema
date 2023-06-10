@@ -1,0 +1,29 @@
+.button {
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  text-align: center;
+  &:disabled {
+  color: var(--bg-graphite-pixema);
+    cursor: not-allowed;
+  }
+  &:active{
+    outline: none;
+  }
+}
+
+.filter{
+  background-color: var(--bg-graphite-pixema);  
+  &:active{
+    outline: auto;
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.user{
+  background-color: var (--primary-purple-first);
+}

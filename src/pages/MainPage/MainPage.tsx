@@ -1,3 +1,3 @@
-export const MainPage =()=>{
-return <div>MainPage</div>
-}
+export const MainPage = () => {
+  return <div>MainPage</div>;
+};

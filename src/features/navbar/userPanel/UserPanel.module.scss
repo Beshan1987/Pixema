@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  color: #ffffff;
+  align-items: center;
+  justify-content: space-around;
+  :first-child{
+    border-radius: 10px;
+    background: var(--primary-purple-first);
+    height: 100%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 21px 0px 0px;
+  }
+}

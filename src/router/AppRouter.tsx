@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+
 import { MainLayout } from '~/layouts/mainLayout/MainLayout';
-
 import { MainPage } from '~/pages/MainPage/MainPage';
-
+import { TrendPage } from '~/pages/TrendPage/TrendPage';
 
 export const routerSchema = createBrowserRouter([
   {
@@ -12,6 +12,10 @@ export const routerSchema = createBrowserRouter([
       {
         index: true,
         element: <MainPage />
+      },
+      {
+        path: '/Trends',
+        element: <TrendPage />
       }
     ]
   },
@@ -20,5 +24,4 @@ export const routerSchema = createBrowserRouter([
     element: <div>not found</div>
   }
 ]);
-
 export const AppRouter = () => <RouterProvider router={routerSchema} />;
