@@ -5,6 +5,7 @@
   justify-content: space-between;
   width: 40%;
   gap: 10px;
+  position: relative;
   :first-child {
     border-radius: 10px;
     background: var(--primary-purple-first);
@@ -32,12 +33,5 @@
   }
   .burger {
     display: block;
-  }
-}
-
-.menu {
-  transition: transform ease-in-out 300ms;
-  &[data-open='true'] {
-    transform: translateX(0);
   }
 }

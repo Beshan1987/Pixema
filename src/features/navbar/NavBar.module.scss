@@ -7,16 +7,17 @@
   gap: 20px;
   display: flex;
   align-items: center;
+  position: relative;
   a:first-child {
     flex: 1 1 30%;
   }
   form:nth-child(2) {
-    flex: 1 1 70%;
+    flex: 1 1 60%;
   }
 }
 
 @media (max-width: 768px) {
-  .MenuDesktop {
+  .menuDesktop {
     display: none;
   }
 }

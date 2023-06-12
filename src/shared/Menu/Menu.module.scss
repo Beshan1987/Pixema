@@ -1,12 +1,10 @@
 .desktop {
   position: absolute;
-  max-width: 200px;
-  width: 100%;
+  width: 23%;
   display: flex;
   flex-flow: column;
   gap: 40px;
   color: var(--secondary-grey);
-  overflow: auto;
   padding-top: 80px;
   a {
     color: inherit;
@@ -28,11 +26,26 @@
 
 .tablet {
   right: 0;
+  top: 0;
+  padding-top: 0;
+  margin-top: 70px;
+  display: none;
+  transition: ease-in-out 300ms;
+  transform: translateX(110%);
+  &[data-open='false'] {
+    transform: translateX(0);
+  }
 }
 
 .container .active {
   color: var(--primary-purple-first);
   svg path {
     fill: currentColor;
+  }
+}
+
+@media (max-width: 768px) {
+  .tablet {
+    display: flex;
   }
 }

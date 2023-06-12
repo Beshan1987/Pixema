@@ -11,7 +11,7 @@ export const NavBar = () => {
   return (
     <>
       <div className={styleNavBar.menu}>
-        <div className={styleNavBar.MenuDesktop}>
+        <div className={styleNavBar.menuDesktop}>
           <Menu />
         </div>
       </div>

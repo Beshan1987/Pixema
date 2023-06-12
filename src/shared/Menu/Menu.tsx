@@ -11,12 +11,15 @@ import menuStyle from './Menu.module.scss';
 import { MenuStyleAppearance } from './Menu.types';
 
 export const Menu = ({
-  appearance = MenuStyleAppearance.desktop
+  appearance = MenuStyleAppearance.desktop,
+  isOpen
 }: {
   appearance?: MenuStyleAppearance;
+  isOpen?: boolean;
 }) => {
   return (
     <div
+      data-open={isOpen}
       className={classNames({
         [menuStyle.desktop]: true,
         [menuStyle[appearance]]: true
