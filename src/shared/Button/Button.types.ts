@@ -3,7 +3,8 @@ export const ButtonStyleAppearance = {
   filter: 'filter',
   user: 'user',
   chevron: 'chevron',
-  burger: 'burger'
+  burger: 'burger',
+  pagination: 'pagination'
 };
 
 export type ButtonStyleAppearances =

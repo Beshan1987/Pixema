@@ -41,3 +41,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.pagination {
+  padding: 5px 20px;
+  background: var(--bg-graphite-pixema);
+  color: var(--text-color);
+  border-radius: 10px;
+  &:hover {
+    color: var(--primary-purple-second);
+  }
+}

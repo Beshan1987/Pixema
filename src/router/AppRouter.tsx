@@ -1,7 +1,9 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { MainLayout } from '~/layouts/mainLayout/MainLayout';
+import { CertainPage } from '~/pages/CertainPage/CertainPage';
 import { MainPage } from '~/pages/MainPage/MainPage';
+import { SearchResultPage } from '~/pages/SearchResultPage/SearchResultPage';
 import { TrendPage } from '~/pages/TrendPage/TrendPage';
 
 export const routerSchema = createBrowserRouter([
@@ -16,6 +18,14 @@ export const routerSchema = createBrowserRouter([
       {
         path: '/Trends',
         element: <TrendPage />
+      },
+      {
+        path: '/searchResult',
+        element: <SearchResultPage />
+      },
+      {
+        path: '/card/:id',
+        element: <CertainPage />
       }
     ]
   },
