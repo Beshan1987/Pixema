@@ -57,3 +57,24 @@
     line-height: calc(24px / 16px) * 100%;
   }
 }
+
+.shorts {
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  div {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    span:first-child {
+      color: var(--basic-light-pixema);
+      width: 20%;
+    }
+    span:last-child {
+      width: 70%;
+      color: var(--text-color);
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}

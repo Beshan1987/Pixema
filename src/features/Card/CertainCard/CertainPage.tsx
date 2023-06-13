@@ -33,6 +33,42 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
             <div>{card.Runtime}</div>
           </div>
           <p>{card.Plot}</p>
+          <div>
+            <div className={styleCard.shorts}>
+              <div>
+                <span>Year</span>
+                <span>{card.Year}</span>
+              </div>
+              <div>
+                <span>Released</span>
+                <span>{card.Released}</span>
+              </div>
+              <div>
+                <span>BoxOffice</span>
+                <span>{card.BoxOffice}</span>
+              </div>
+              <div>
+                <span>Country</span>
+                <span>{card.Country}</span>
+              </div>
+              <div>
+                <span>Production</span>
+                <span>{card.Production}</span>
+              </div>
+              <div>
+                <span>Actors</span>
+                <span>{card.Actors}</span>
+              </div>
+              <div>
+                <span>Director</span>
+                <span>{card.Director}</span>
+              </div>
+              <div>
+                <span>Writers</span>
+                <span>{card.Writer}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
