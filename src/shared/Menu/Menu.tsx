@@ -12,10 +12,12 @@ import { MenuStyleAppearance } from './Menu.types';
 
 export const Menu = ({
   appearance = MenuStyleAppearance.desktop,
-  isOpen
+  isOpen,
+  makeOpen
 }: {
   appearance?: MenuStyleAppearance;
   isOpen?: boolean;
+  makeOpen?: () => void;
 }) => {
   return (
     <div
@@ -30,6 +32,7 @@ export const Menu = ({
           className={({ isActive }) => (isActive ? `${menuStyle.active}` : '')}
           to={link.path}
           key={link.path}
+          onClick={makeOpen}
         >
           {link.title === 'Home' ? (
             <IconHome />

@@ -4,7 +4,8 @@ export const ButtonStyleAppearance = {
   user: 'user',
   chevron: 'chevron',
   burger: 'burger',
-  pagination: 'pagination'
+  pagination: 'pagination',
+  system: 'system'
 };
 
 export type ButtonStyleAppearances =

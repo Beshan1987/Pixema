@@ -51,3 +51,12 @@
     color: var(--primary-purple-second);
   }
 }
+
+.system {
+  padding: 16px 0;
+  border-radius: 10px;
+  background-color: var(--primary-purple-first);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+}

@@ -4,6 +4,10 @@
   color: var(--text-color);
   align-self: stretch !important;
   margin-right: 30%;
+  button {
+    width: 30%;
+    margin: 20px 0px;
+  }
   h2 {
     font-size: 24px;
     line-height: calc(36px / 24px) * 100%;

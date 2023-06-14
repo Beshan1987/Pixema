@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { fetchSearch } from '~/api/fetchSearch';
 import { type SearchCard } from '~/entities/Card';
@@ -10,6 +11,8 @@ import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { Pagination } from '~/shared/Pagintion/Pagination';
 import { type RootState } from '~/store';
 
+import styleSearchPage from './SearchPage.module.scss';
+
 export const SearchResultPage = () => {
   const searchData = useSelector((state: RootState) => state.searchData.data);
 
@@ -17,6 +20,7 @@ export const SearchResultPage = () => {
   const [numberPage, setNumberPage] = useState<string>('');
   const [page, setPage] = useState<number>(1);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchSearch({ request: searchData || '', page: page })
@@ -29,14 +33,21 @@ export const SearchResultPage = () => {
 
   if (card) {
     return (
-      <div>
-        {page > 1 ? (
+      <div className={styleSearchPage.Container}>
+        <div className={styleSearchPage.containerBtn}>
           <Button
-            onClick={() => setPage(1)}
-            text={'Back to start'}
+            text={'Back to home'}
             appearance={ButtonStyleAppearance.pagination}
+            onClick={() => navigate('/')}
           ></Button>
-        ) : null}
+          {page > 1 ? (
+            <Button
+              onClick={() => setPage(1)}
+              text={'Back to first page'}
+              appearance={ButtonStyleAppearance.pagination}
+            ></Button>
+          ) : null}
+        </div>
         {error && <div>{error}</div>}
         <h1>result of searching: {searchData}</h1>
         <h2>all found: {+numberPage * 10} movies</h2>

@@ -26,7 +26,7 @@ export const MainPage = () => {
       {page > 1 ? (
         <Button
           onClick={() => setPage(1)}
-          text={'Back to start'}
+          text={'Back to first page'}
           appearance={ButtonStyleAppearance.pagination}
         ></Button>
       ) : null}

@@ -1,0 +1,19 @@
+.Container {
+  .containerBtn {
+    display: flex;
+    justify-content: space-between;
+    :first-child {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .Container {
+    .containerBtn {
+      :first-child {
+        display: flex;
+      }
+    }
+  }
+}

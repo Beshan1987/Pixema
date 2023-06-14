@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as IconSwitchOff } from '~/assets/icons/iconSwitchOff.svg';
 import { ReactComponent as IconSwitchOn } from '~/assets/icons/iconSwitchOn.svg';
 import { switchTheme } from '~/features/states/themeSlice/themeSlice';
 import { Button } from '~/shared/Button/Button';
+import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { type RootState } from '~/store';
 
 import styleSettingPage from './SettingPage.module.scss';
@@ -13,6 +15,7 @@ import styleSettingPage from './SettingPage.module.scss';
 export const SettingPage = () => {
   const theme = useSelector((state: RootState) => state.switchTheme.value);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document
@@ -34,6 +37,11 @@ export const SettingPage = () => {
           ></Button>
         </div>
       </div>
+      <Button
+        text={'back to home'}
+        appearance={ButtonStyleAppearance.system}
+        onClick={() => navigate('/')}
+      ></Button>
     </div>
   );
 };

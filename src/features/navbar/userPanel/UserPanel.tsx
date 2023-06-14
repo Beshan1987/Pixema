@@ -57,6 +57,7 @@ export const PanelUser = () => {
       <Menu
         appearance={MenuStyleAppearance.tablet}
         isOpen={isOpenMenu}
+        makeOpen={toggleBurger}
       />
       <UserActionBar isOpen={isOpenUserActionBar} />
     </>
