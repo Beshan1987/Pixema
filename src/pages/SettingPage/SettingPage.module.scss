@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  color: var(--text-color);
+  align-self: stretch !important;
+  margin-right: 30%;
+  h2 {
+    font-size: 24px;
+    line-height: calc(36px / 24px) * 100%;
+    margin: 0;
+    padding-bottom: 16px;
+  }
+
+  .darkModeContainer {
+    display: flex;
+    justify-content: space-between;
+    background: var(--bg-dark-pixema);
+    padding: 24px 40px;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+    .darkMode {
+      display: flex;
+      flex-flow: column;
+      gap: 4px;
+      font-size: 16px;
+      line-height: calc(24px / 16px) * 100%;
+      font-weight: 500;
+      span:nth-child(2) {
+        color: var(--basic-light-pixema);
+      }
+    }
+    .switcher {
+      button {
+        div {
+          background: var(--bg-dark-pixema);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-right: 0;
+  }
+}

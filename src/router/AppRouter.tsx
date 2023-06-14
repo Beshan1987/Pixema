@@ -4,6 +4,7 @@ import { MainLayout } from '~/layouts/mainLayout/MainLayout';
 import { CertainPage } from '~/pages/CertainPage/CertainPage';
 import { MainPage } from '~/pages/MainPage/MainPage';
 import { SearchResultPage } from '~/pages/SearchResultPage/SearchResultPage';
+import { SettingPage } from '~/pages/SettingPage/SettingPage';
 import { TrendPage } from '~/pages/TrendPage/TrendPage';
 
 export const routerSchema = createBrowserRouter([
@@ -26,6 +27,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: '/card/:id',
         element: <CertainPage />
+      },
+      {
+        path: '/Settings',
+        element: <SettingPage />
       }
     ]
   },

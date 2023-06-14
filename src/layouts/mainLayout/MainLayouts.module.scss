@@ -11,10 +11,10 @@
     flex: 1;
     max-width: var(--width-content-container);
     margin-left: 24%;
-    align-self: flex-start;
   }
 
   footer {
+    padding-left: 60px;
     width: 100%;
     max-width: var(--width-content-container);
     align-self: flex-start;
@@ -28,5 +28,8 @@
   }
   .container {
     padding: 40px 10px 40px 10px;
+    footer {
+      padding-left: 0;
+    }
   }
 }

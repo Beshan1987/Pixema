@@ -20,7 +20,11 @@
 }
 
 :root.dark {
-  --text-color: #f3f3f3;
+  --bg-black-pixema: #e5e5e5;
+  --bg-graphite-pixema: #ffffff;
+  --basic-white-pixema: #afb2b6;
+  --bg-dark-pixema: #ffffff;
+  --text-color: #afb2b6;
 }
 
 body {
