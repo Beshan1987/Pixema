@@ -7,9 +7,8 @@ import { type SearchCard } from '~/entities/Card';
 import { Card } from '~/features/Card/Card';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
+import { Pagination } from '~/shared/Pagintion/Pagination';
 import { type RootState } from '~/store';
-
-import styleMain from './SearchPage.module.scss';
 
 export const SearchResultPage = () => {
   const searchData = useSelector((state: RootState) => state.searchData.data);
@@ -31,34 +30,22 @@ export const SearchResultPage = () => {
   if (card) {
     return (
       <div>
+        {page > 1 ? (
+          <Button
+            onClick={() => setPage(1)}
+            text={'Back to start'}
+            appearance={ButtonStyleAppearance.pagination}
+          ></Button>
+        ) : null}
         {error && <div>{error}</div>}
         <h1>result of searching: {searchData}</h1>
-        <h2>all found: {+numberPage * 10}</h2>
+        <h2>all found: {+numberPage * 10} movies</h2>
         <Card card={card} />
-        <div className={styleMain.pagination}>
-          <Button
-            text={'1'}
-            onClick={() => setPage(1)}
-            appearance={ButtonStyleAppearance.pagination}
-          ></Button>
-          <Button
-            text={page.toString()}
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-            appearance={ButtonStyleAppearance.pagination}
-          ></Button>
-          <Button
-            text={(page + 1).toString()}
-            onClick={() => setPage(page + 1)}
-            disabled={page === +numberPage}
-            appearance={ButtonStyleAppearance.pagination}
-          ></Button>
-          <Button
-            text={numberPage}
-            onClick={() => setPage(+numberPage)}
-            appearance={ButtonStyleAppearance.pagination}
-          ></Button>
-        </div>
+        <Pagination
+          page={page}
+          setPage={setPage}
+          numberPage={numberPage}
+        />
       </div>
     );
   }

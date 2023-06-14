@@ -12,9 +12,11 @@ export const Card = ({ card }: { card: SearchCard[] }) => {
           className={styleCard.container}
           key={card.imdbID}
         >
-          <div>
-            <img src={card.Poster}></img>
-          </div>
+          <Link to={`/card/${card.imdbID}`}>
+            <div>
+              <img src={card.Poster}></img>
+            </div>
+          </Link>
           <Link to={`/card/${card.imdbID}`}>
             <div>{card.Title}</div>
           </Link>

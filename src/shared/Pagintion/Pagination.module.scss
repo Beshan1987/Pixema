@@ -1,0 +1,20 @@
+.pagination {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: var(--text-color);
+  span {
+    color: var(--primary-purple-first);
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+  svg path {
+    fill: currentColor;
+  }
+  :disabled {
+    background: var(--secondary-grey);
+    color: var(--secondary-grey);
+  }
+}

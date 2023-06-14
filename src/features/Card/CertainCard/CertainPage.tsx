@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as IconIMDB } from '~/assets/icons/IconIMDB.svg';
@@ -9,6 +11,12 @@ import styleCard from './CertainCard.module.scss';
 
 export const CertainCard = ({ card }: { card: CardAPI }) => {
   const navigate = useNavigate();
+  const [isOpened, setOpened] = useState(false);
+
+  const toggleDescription = () => {
+    setOpened((hasBeenOpened) => !hasBeenOpened);
+  };
+
   return (
     <>
       <Button
@@ -22,7 +30,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
             <img src={card.Poster}></img>
           </div>
         </div>
-        <div className={styleCard.containerDiscription}>
+        <div className={styleCard.containerDescription}>
           <span>{card.Genre.split(',').join(' -')}</span>
           <h1>{card.Title}</h1>
           <div className={styleCard.rating}>
@@ -32,7 +40,12 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
             </div>
             <div>{card.Runtime}</div>
           </div>
-          <p>{card.Plot}</p>
+          <p data-open={isOpened}>{card.Plot}</p>
+          <Button
+            onClick={() => toggleDescription()}
+            appearance={ButtonStyleAppearance.pagination}
+            text={isOpened ? 'close plot' : 'show full plot'}
+          ></Button>
           <div>
             <div className={styleCard.shorts}>
               <div>

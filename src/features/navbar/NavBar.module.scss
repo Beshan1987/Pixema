@@ -9,7 +9,8 @@
   align-items: center;
   position: relative;
   a:first-child {
-    flex: 1 1 30%;
+    flex: 1 1 25%;
+    padding-left: 60px;
   }
   div:nth-child(2) {
     flex: 1 1 60%;
@@ -19,5 +20,8 @@
 @media (max-width: 768px) {
   .menuDesktop {
     display: none;
+  }
+  .interactContainer a:first-child {
+    padding-left: 10px;
   }
 }
