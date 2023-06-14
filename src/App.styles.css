@@ -16,6 +16,7 @@
   --basic-orange-pixema: #f3a608;
   --width-content-container: 1490px;
   --text-color: #ffffff;
+  overflow-x: hidden;
 }
 
 :root.dark {
