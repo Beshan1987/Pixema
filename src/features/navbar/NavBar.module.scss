@@ -21,7 +21,9 @@
   .menuDesktop {
     display: none;
   }
-  .interactContainer a:first-child {
-    padding-left: 10px;
+  .interactContainer {
+    a:first-child {
+      padding-left: 10px;
+    }
   }
 }

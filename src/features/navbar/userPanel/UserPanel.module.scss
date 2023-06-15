@@ -1,12 +1,11 @@
 .container {
   display: flex;
-  color: var(--basic-white-pixema);
+  color: var(--text-color);
   align-items: center;
   justify-content: space-between;
   width: 25%;
   gap: 10px;
   position: relative;
-  padding-right: 60px;
   :first-child {
     border-radius: 10px;
     background: var(--primary-purple-first);

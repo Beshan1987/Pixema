@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { MainLayout } from '~/layouts/mainLayout/MainLayout';
 import { CertainPage } from '~/pages/CertainPage/CertainPage';
+import { FavoritiesPage } from '~/pages/FavoritiesPage/FavoritiesPage';
 import { MainPage } from '~/pages/MainPage/MainPage';
 import { SearchResultPage } from '~/pages/SearchResultPage/SearchResultPage';
 import { SettingPage } from '~/pages/SettingPage/SettingPage';
@@ -31,6 +32,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: '/Settings',
         element: <SettingPage />
+      },
+      {
+        path: '/Favorities',
+        element: <FavoritiesPage />
       }
     ]
   },

@@ -10,15 +10,16 @@ type ResponseSearch = {
   totalResults: string;
 };
 
-export async function fetchSearch({
+export async function fetchStart({
   request,
   page
 }: {
   request: string;
   page: number;
 }): Promise<ResponseSearch> {
+  const year = Math.floor(Math.random() * (2024 - 2020) + 2010);
   const { data } = await axios<ResponseSearch>(
-    `https://www.omdbapi.com/?apikey=94df158a&s=${request}&page=${page}`
+    `https://www.omdbapi.com/?apikey=94df158a&s=${request}&page=${page}&y=${year}`
   );
 
   return data;

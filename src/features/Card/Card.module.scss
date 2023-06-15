@@ -29,6 +29,10 @@
       color: var(--primary-purple-second);
     }
   }
+  .description {
+    padding-top: 5px;
+    color: var(--basic-light-pixema);
+  }
 }
 
 @media (max-width: 768px) {

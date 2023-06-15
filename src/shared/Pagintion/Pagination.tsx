@@ -18,12 +18,26 @@ export const Pagination = ({
     <div className={stylePagination.pagination}>
       <Button
         text={'1'}
-        onClick={() => setPage(1)}
+        onClick={() => {
+          setPage(1);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }}
         appearance={ButtonStyleAppearance.pagination}
         style={page === 1 ? { display: 'none' } : { display: 'block' }}
       ></Button>
       <Button
-        onClick={() => setPage(page - 1)}
+        onClick={() => {
+          setPage(page - 1);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }}
         disabled={page === 1}
         icon={<IconLeft />}
         appearance={ButtonStyleAppearance.pagination}
@@ -31,14 +45,28 @@ export const Pagination = ({
       ></Button>
       <span>{page}</span>
       <Button
-        onClick={() => setPage(page + 1)}
+        onClick={() => {
+          setPage(page + 1);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }}
         disabled={page === +numberPage}
         appearance={ButtonStyleAppearance.pagination}
         icon={<IconRight />}
       ></Button>
       <Button
         text={numberPage}
-        onClick={() => setPage(+numberPage)}
+        onClick={() => {
+          setPage(+numberPage);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+        }}
         appearance={ButtonStyleAppearance.pagination}
       ></Button>
     </div>

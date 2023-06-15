@@ -1,7 +1,8 @@
 {
   "private": true,
-  "name": "tms-typescript",
+  "name": "pixema",
   "version": "0.0.0",
+  "author": "Andrey Beshten",
   "type": "module",
   "scripts": {
     "build": "vite build",
@@ -13,6 +14,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "1.9.5",
+    "axios": "1.4.0",
     "classnames": "2.3.2",
     "date-fns": "2.29.3",
     "react": "18.2.0",

@@ -8,19 +8,26 @@ export const Card = ({ card }: { card: SearchCard[] }) => {
   return (
     <div className={styleCard.wrapper}>
       {card.map((card) => (
-        <div
-          className={styleCard.container}
-          key={card.imdbID}
-        >
-          <Link to={`/card/${card.imdbID}`}>
-            <div>
-              <img src={card.Poster}></img>
+        <>
+          {card.Poster === 'N/A' ? null : (
+            <div
+              className={styleCard.container}
+              key={card.imdbID}
+            >
+              <Link to={`/card/${card.imdbID}`}>
+                <div>
+                  <img src={card.Poster}></img>
+                </div>
+              </Link>
+              <Link to={`/card/${card.imdbID}`}>
+                <div>{card.Title}</div>
+              </Link>
+              <div className={styleCard.description}>
+                {card.Year} / {card.Type}
+              </div>
             </div>
-          </Link>
-          <Link to={`/card/${card.imdbID}`}>
-            <div>{card.Title}</div>
-          </Link>
-        </div>
+          )}
+        </>
       ))}
     </div>
   );

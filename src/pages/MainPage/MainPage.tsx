@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { fetchSearch } from '~/api/fetchSearch';
+import { fetchStart } from '~/api/fethcStart';
 import { type SearchCard } from '~/entities/Card';
 import { Card } from '~/features/Card/Card';
 import { Button } from '~/shared/Button/Button';
@@ -13,7 +13,7 @@ export const MainPage = () => {
   const [page, setPage] = useState<number>(1);
   const [error, setError] = useState('');
   useEffect(() => {
-    fetchSearch({ request: 'man', page: page })
+    fetchStart({ request: 'man', page: page })
       .then((data) => {
         setCard(data.Search);
         setNumberPage(Math.floor(+data.totalResults / 10).toString());
@@ -30,13 +30,18 @@ export const MainPage = () => {
           appearance={ButtonStyleAppearance.pagination}
         ></Button>
       ) : null}
-      {error ? <div>{error}</div> : null}
-      <Card card={card} />
-      <Pagination
-        page={page}
-        setPage={setPage}
-        numberPage={numberPage}
-      />
+      {error ? (
+        <div>{error}</div>
+      ) : (
+        <div>
+          <Card card={card} />
+          <Pagination
+            page={page}
+            setPage={setPage}
+            numberPage={numberPage}
+          />
+        </div>
+      )}
     </div>
   );
 };
