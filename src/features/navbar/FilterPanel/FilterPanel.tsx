@@ -4,7 +4,7 @@ import { ReactComponent as IconCancel } from '~/assets/icons/IconCancel.svg';
 import { switchFilterState } from '~/features/states/filterSlice/filterSlice';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
-import { type RootState } from '~/store';
+import { type RootState } from '~/store/store';
 
 import styleFilterPanel from './FilterPanel.module.scss';
 

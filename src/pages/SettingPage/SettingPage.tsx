@@ -1,27 +1,21 @@
-import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as IconSwitchOff } from '~/assets/icons/iconSwitchOff.svg';
 import { ReactComponent as IconSwitchOn } from '~/assets/icons/iconSwitchOn.svg';
+import { AppTheme } from '~/features/states/themeSlice/theme.constants';
 import { switchTheme } from '~/features/states/themeSlice/themeSlice';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
-import { type RootState } from '~/store';
+import { type RootState } from '~/store/store';
 
 import styleSettingPage from './SettingPage.module.scss';
 
 export const SettingPage = () => {
-  const theme = useSelector((state: RootState) => state.switchTheme.value);
+  const theme = useSelector((state: RootState) => state.switchTheme.appearance);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document
-      .querySelector(':root')!
-      .classList[theme === 'dark' ? 'add' : 'remove']('dark');
-  }, [theme]);
   return (
     <div className={styleSettingPage.container}>
       <h2>Color mode</h2>
@@ -32,8 +26,14 @@ export const SettingPage = () => {
         </div>
         <div className={styleSettingPage.switcher}>
           <Button
-            icon={theme === 'dark' ? <IconSwitchOff /> : <IconSwitchOn />}
-            onClick={() => dispatch(switchTheme())}
+            icon={
+              theme === AppTheme.dark ? <IconSwitchOff /> : <IconSwitchOn />
+            }
+            onClick={() => {
+              theme === AppTheme.dark
+                ? dispatch(switchTheme(AppTheme.light))
+                : dispatch(switchTheme(AppTheme.dark));
+            }}
           ></Button>
         </div>
       </div>

@@ -9,7 +9,7 @@ import { switchFilterState } from '~/features/states/filterSlice/filterSlice';
 import { getSearchData } from '~/features/states/searchData/searchDataSlice';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
-import { type RootState } from '~/store';
+import { type RootState } from '~/store/store';
 
 import { type SearchState } from './Search.types';
 import styleSearch from './SearchBar.module.scss';

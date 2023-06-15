@@ -9,7 +9,7 @@ import { Card } from '~/features/Card/Card';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { Pagination } from '~/shared/Pagintion/Pagination';
-import { type RootState } from '~/store';
+import { type RootState } from '~/store/store';
 
 import styleSearchPage from './SearchPage.module.scss';
 
