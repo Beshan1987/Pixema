@@ -10,15 +10,17 @@ type ResponseSearch = {
   totalResults: string;
 };
 
-export async function fetchSearch({
-  request,
+export async function fetchSearchFilter({
+  title,
+  year,
   page
 }: {
-  request: string;
+  title: string;
+  year: string;
   page: number;
 }): Promise<ResponseSearch> {
   const { data } = await axios<ResponseSearch>(
-    `https://www.omdbapi.com/?apikey=94df158a&s=${request}&page=${page}&limit=20`
+    `https://www.omdbapi.com/?apikey=94df158a&s=${title}&y=${year}&p=${page}`
   );
 
   return data;

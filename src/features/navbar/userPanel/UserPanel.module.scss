@@ -20,6 +20,10 @@
     width: 20px;
     height: 20px;
     background-color: transparent;
+    &:hover svg path {
+      color: var(--text-color);
+      fill: none;
+    }
   }
 }
 

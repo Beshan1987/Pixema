@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as FilterIcon } from '~/assets/icons/FilterIcon.svg';
 import { ReactComponent as IconFilterOpened } from '~/assets/icons/IconFilterOpened.svg';
 import { switchFilterState } from '~/features/states/filterSlice/filterSlice';
-import { getSearchData } from '~/features/states/searchData/searchDataSlice';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { type RootState } from '~/store/store';
@@ -44,13 +43,8 @@ export const SearchBar = () => {
               setFormState({ request: value })
             }
           />
-          <Link to="/searchResult">
-            <Button
-              onClick={() => {
-                dispatch(getSearchData(formState.request));
-                setFormState(getDefaultFormValues());
-              }}
-            ></Button>
+          <Link to={`/searchResult/${formState.request}`}>
+            <Button></Button>
           </Link>
         </form>
         <Button

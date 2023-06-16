@@ -22,7 +22,7 @@ export const routerSchema = createBrowserRouter([
         element: <TrendPage />
       },
       {
-        path: '/searchResult',
+        path: '/searchResult/:request',
         element: <SearchResultPage />
       },
       {

@@ -7,19 +7,47 @@
   background-color: var(--bg-dark-pixema);
   transform: translateX(110%);
   transition: transform ease-in-out 300ms;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 20px;
   &[data-open='true'] {
     transform: translateX(0);
   }
   z-index: 1000;
-  .btnCancel {
-    position: absolute;
-    right: 42px;
-    top: 55px;
-    button {
-      color: var(--basic-light-pixema);
-      width: 20px;
-      height: 20px;
-      padding: 10px;
+
+  .innerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p {
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 24px;
+      line-height: calc(36px / 24px) * 100%;
     }
+    .btnCancel {
+      button {
+        width: 20px;
+        height: 20px;
+        padding: 10px;
+      }
+    }
+  }
+  .containerBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  form {
+    display: flex;
+    flex-flow: column;
+    gap: 30px;
+    position: relative;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 300px;
   }
 }

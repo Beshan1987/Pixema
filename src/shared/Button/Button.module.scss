@@ -6,14 +6,21 @@
   padding: 0;
   text-align: center;
   &:disabled {
-    color: var(--bg-graphite-pixema);
+    color: var(--basic-light-pixema);
+    background: var(--secondary-grey);
     cursor: not-allowed;
+    &:hover {
+      color: var(--basic-light-pixema);
+    }
   }
   &:active {
-    outline: auto;
+    outline: none;
   }
   &:focus {
     outline: none;
+  }
+  &:hover svg path {
+    fill: currentColor;
   }
 }
 
@@ -27,8 +34,9 @@
 
 .chevron {
   background-color: transparent;
-  &:hover svg path {
-    fill: var (--primary-purple-first);
+  color: var(--primary-purple-first);
+  &:hover {
+    fill: var(--primary-purple-first);
   }
 }
 

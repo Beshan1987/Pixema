@@ -2,13 +2,18 @@
   display: flex;
   flex-flow: column;
   width: 100%;
+
   label {
     display: block;
-    color: var (--menu-color-text);
+    color: var(--text-color);
     font-weight: 600;
   }
   input {
+    border-radius: 10px;
+    background-color: var(--bg-graphite-pixema);
+    color: var(--text-color);
     appearance: none;
+    outline: none;
     display: block;
     padding: 18px 20px;
     width: 100%;
