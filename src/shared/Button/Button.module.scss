@@ -11,6 +11,7 @@
     cursor: not-allowed;
     &:hover {
       color: var(--basic-light-pixema);
+      background: var(--secondary-grey);
     }
   }
   &:active {
@@ -18,9 +19,6 @@
   }
   &:focus {
     outline: none;
-  }
-  &:hover svg path {
-    fill: currentColor;
   }
 }
 
@@ -48,6 +46,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    color: var(--basic-light-pixema);
+  }
 }
 
 .pagination {
@@ -61,10 +62,14 @@
 }
 
 .system {
-  padding: 16px 0;
+  padding: 5px 10px;
   border-radius: 10px;
   background-color: var(--primary-purple-first);
   color: var(--text-color);
   display: flex;
   justify-content: center;
+
+  &:hover {
+    background-color: var(--primary-purple-second);
+  }
 }

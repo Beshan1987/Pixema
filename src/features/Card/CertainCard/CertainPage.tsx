@@ -22,7 +22,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
       <Button
         onClick={() => navigate(-1)}
         text="Go back"
-        appearance={ButtonStyleAppearance.pagination}
+        appearance={ButtonStyleAppearance.system}
       ></Button>
       <div className={styleCard.wrapper}>
         <div className={styleCard.containerImg}>

@@ -3,21 +3,22 @@
   color: var(--text-color);
   align-items: center;
   justify-content: space-between;
-  width: 25%;
   gap: 10px;
   position: relative;
   :first-child {
     border-radius: 10px;
     background: var(--primary-purple-first);
-    height: 100%;
-    width: 50px;
+    max-width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  :nth-child(2) {
+    max-width: 150px;
+  }
   :last-child {
-    width: 20px;
+    max-width: 20px;
     height: 20px;
     background-color: transparent;
     &:hover svg path {

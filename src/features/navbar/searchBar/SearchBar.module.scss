@@ -18,7 +18,7 @@
 
 .wrapper {
   display: flex;
-  button {
+  > button {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding-right: 10px;

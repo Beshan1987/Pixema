@@ -35,14 +35,14 @@ export const SearchResultPage = () => {
         <div className={styleSearchPage.containerBtn}>
           <Button
             text={'Back to home'}
-            appearance={ButtonStyleAppearance.pagination}
+            appearance={ButtonStyleAppearance.system}
             onClick={() => navigate('/')}
           ></Button>
           {page > 1 ? (
             <Button
               onClick={() => setPage(1)}
               text={'Back to first page'}
-              appearance={ButtonStyleAppearance.pagination}
+              appearance={ButtonStyleAppearance.system}
             ></Button>
           ) : null}
         </div>

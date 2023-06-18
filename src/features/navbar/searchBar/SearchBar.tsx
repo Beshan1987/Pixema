@@ -33,7 +33,7 @@ export const SearchBar = () => {
           className={styleSearch.container}
           onSubmit={(event) => {
             event.preventDefault();
-            setFormState(getDefaultFormValues());
+            setFormState(getDefaultFormValues);
           }}
         >
           <input
@@ -44,7 +44,7 @@ export const SearchBar = () => {
             }
           />
           <Link to={`/searchResult/${formState.request}`}>
-            <Button></Button>
+            <Button onClick={() => setFormState(getDefaultFormValues)}></Button>
           </Link>
         </form>
         <Button

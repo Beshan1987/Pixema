@@ -29,7 +29,7 @@ export const MainPage = () => {
         <Button
           onClick={() => setPage(1)}
           text={'Back to first page'}
-          appearance={ButtonStyleAppearance.pagination}
+          appearance={ButtonStyleAppearance.system}
         ></Button>
       ) : null}
       {error ? (

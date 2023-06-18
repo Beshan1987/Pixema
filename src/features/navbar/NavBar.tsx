@@ -16,9 +16,11 @@ export const NavBar = () => {
         </div>
       </div>
       <div className={styleNavBar.interactContainer}>
-        <Link to="/">
-          <Pixema />
-        </Link>
+        <div>
+          <Link to="/">
+            <Pixema />
+          </Link>
+        </div>
         <SearchBar />
         <PanelUser />
       </div>

@@ -36,7 +36,6 @@ export const FilterPanel = () => {
           onClick={() => dispatch(switchFilterState())}
         />
       </div>
-      <div>{`found:`}</div>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -73,18 +72,18 @@ export const FilterPanel = () => {
         />
         <div className={styleFilterPanel.containerBtn}>
           <Button
-            type="submit"
-            text={ButtonNames['Show results']}
-            appearance={ButtonStyleAppearance.pagination}
-            disabled={formState.title.length < 3}
-          ></Button>
-          <Button
             type="button"
             className={styleFilterPanel.btnClean}
             text={ButtonNames['Clear filter']}
             appearance={ButtonStyleAppearance.pagination}
             onClick={() => setFormState(getDefaultFormValues)}
             disabled={!formState.title && !formState.year}
+          ></Button>
+          <Button
+            type="submit"
+            text={ButtonNames['Show results']}
+            appearance={ButtonStyleAppearance.system}
+            disabled={formState.title.length < 3}
           ></Button>
         </div>
       </form>
