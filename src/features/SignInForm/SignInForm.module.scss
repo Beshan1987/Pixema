@@ -1,0 +1,10 @@
+.container {
+  margin: auto;
+  padding: 40px;
+  max-width: 600px;
+  border: 1px solid var(--tms-background-medium-color);
+
+  & > *:not(:last-child) {
+    margin-bottom: 40px;
+  }
+}

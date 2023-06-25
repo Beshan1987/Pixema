@@ -1,24 +1,22 @@
 import { useEffect, useState } from 'react';
 
 import { fetchStart } from '~/api/fetchStart';
-import { type SearchCard } from '~/entities/Card';
+import { type CardAPI } from '~/entities/Card';
 import { Card } from '~/features/Card/Card';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { Pagination } from '~/shared/Pagintion/Pagination';
 
-import { LaunchRequests, MOVIE_LIMIT } from './constatnts';
-
 export const MainPage = () => {
-  const [card, setCard] = useState<SearchCard[]>([]);
-  const [numberPage, setNumberPage] = useState<string>('');
+  const [card, setCard] = useState<CardAPI[]>([]);
+  const [numberPage, setNumberPage] = useState<number>(0);
   const [page, setPage] = useState<number>(1);
   const [error, setError] = useState('');
   useEffect(() => {
-    fetchStart({ request: LaunchRequests.movieName.man, page: page })
+    fetchStart({ page: page })
       .then((data) => {
-        setCard(data.Search);
-        setNumberPage(Math.floor(+data.totalResults / MOVIE_LIMIT).toString());
+        setCard(data.docs);
+        setNumberPage(data.pages);
       })
       .catch((error: Error) => setError(error.message));
   }, [page]);

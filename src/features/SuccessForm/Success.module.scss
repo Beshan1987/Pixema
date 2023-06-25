@@ -1,0 +1,24 @@
+.container {
+  margin: auto;
+  padding: 40px;
+  max-width: 630px;
+  width: 100%;
+  border: 1px solid #dadada;
+  display: flex;
+  flex-flow: column;
+  padding: 20px;
+  span {
+    margin-bottom: 48px;
+    font-size: 16px;
+    line-height: calc(24px / 16px) * 100%;
+    font-family: var(--font-family-catamaran);
+  }
+  button {
+    height: 56px;
+    color: #ffffff;
+    width: 100%;
+    font-size: 16px;
+    line-height: calc(22px / 16px) * 100%;
+    font-family: var(--font-family-main);
+  }
+}

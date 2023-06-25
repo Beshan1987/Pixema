@@ -1,6 +1,6 @@
 export const LaunchRequests = {
   movieName: {
-    man: 'man',
+    score: 10,
     car: 'car'
   }
 };

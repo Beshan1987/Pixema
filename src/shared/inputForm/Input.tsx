@@ -9,7 +9,6 @@ export const Input = ({
   ...inputProperties
 }: {
   error?: string;
-  id: string;
   label: string;
 } & InputHTMLAttributes<HTMLInputElement>) => {
   return (

@@ -1,33 +1,31 @@
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { ReactComponent as Burger } from '~/assets/icons/burger.svg';
 import { ReactComponent as ChevronDown } from '~/assets/icons/chevronDown.svg';
 import { ReactComponent as ChevronRight } from '~/assets/icons/chevronRight.svg';
 import { ReactComponent as IconCancel } from '~/assets/icons/IconCancel.svg';
 import { ReactComponent as IconUser } from '~/assets/icons/IconUser.svg';
-import { type User } from '~/entities/User';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { Menu } from '~/shared/Menu/Menu';
 import { MenuStyleAppearance } from '~/shared/Menu/Menu.types';
+import { type RootState } from '~/store/store';
 
 import { UserActionBar } from './UserActionBar/UserActionBar';
-import { UserAction } from './UserPanel.constant';
 import stylePanelUser from './UserPanel.module.scss';
 import { UserName } from './UserPanelInitials';
-
-const user: User = {
-  username: 'Beshan Andrey',
-  email: 'dqqq@gmail.com',
-  id: 11
-};
 
 export const PanelUser = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(true);
   const [isOpenUserActionBar, setIsOpenUserActionBar] = useState(true);
 
+  const user = useSelector((state: RootState) =>
+    state.user.currentUser.status === 'success'
+      ? state.user.currentUser.data
+      : null
+  );
   const toggleBurger = () => {
     setIsOpenMenu((hasBeenOpened) => !hasBeenOpened);
   };
@@ -62,12 +60,19 @@ export const PanelUser = () => {
       <UserActionBar isOpen={isOpenUserActionBar} />
     </>
   ) : (
-    <Link to="{/sign-in}">
-      <Button
-        icon={<IconUser />}
-        text={UserAction['sign in']}
-        appearance={ButtonStyleAppearance.user}
-      />
-    </Link>
+    <>
+      <div className={stylePanelUser.container}>
+        <div>
+          <IconUser />
+        </div>
+
+        <Button
+          icon={isOpenUserActionBar ? <ChevronRight /> : <ChevronDown />}
+          appearance={ButtonStyleAppearance.chevron}
+          onClick={toggleUserBar}
+        ></Button>
+      </div>
+      <UserActionBar isOpen={isOpenUserActionBar} />
+    </>
   );
 };

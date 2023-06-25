@@ -1,25 +1,26 @@
-import axios from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 
-import { type SearchCard } from '~/entities/Card';
+import { type CardAPI } from '~/entities/Card';
 
 // import { BASE_API_URL } from './constants';
 
-type ResponseSearch = {
-  Response: string;
-  Search: SearchCard[];
-  totalResults: string;
+type ResponseStartPage = {
+  docs: CardAPI[];
+  page: number;
+  pages: number;
+  total: number;
 };
 
 export async function fetchStart({
-  request,
   page
 }: {
-  request: string;
   page: number;
-}): Promise<ResponseSearch> {
-  const year = Math.floor(Math.random() * (2024 - 2020) + 2010);
-  const { data } = await axios<ResponseSearch>(
-    `https://www.omdbapi.com/?apikey=94df158a&s=${request}&page=${page}&y=${year}`
+}): Promise<ResponseStartPage> {
+  const headers = new AxiosHeaders();
+  headers.set('X-API-KEY', `4CTXY50-B5JMC9P-Q6E6KXJ-WRYJH15`);
+  const { data } = await axios<ResponseStartPage>(
+    `https://api.kinopoisk.dev/v1.3/movie?year=2015-2023&limit=10&top250=%21null&page=${page}`,
+    { headers }
   );
 
   return data;

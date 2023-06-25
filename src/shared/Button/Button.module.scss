@@ -27,7 +27,7 @@
 }
 
 .user {
-  background-color: var (--primary-purple-first);
+  background-color: var(--primary-purple-first);
 }
 
 .chevron {
@@ -59,6 +59,9 @@
   &:hover {
     color: var(--primary-purple-second);
   }
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 5px;
 }
 
 .system {

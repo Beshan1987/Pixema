@@ -12,7 +12,7 @@ export const Pagination = ({
 }: {
   page: number;
   setPage: (page: number) => void;
-  numberPage: string;
+  numberPage: number;
 }) => {
   return (
     <div className={stylePagination.pagination}>
@@ -43,7 +43,7 @@ export const Pagination = ({
         appearance={ButtonStyleAppearance.pagination}
         style={page === 1 ? { display: 'none' } : { display: 'block' }}
       ></Button>
-      <span>{page}</span>
+      <span>{numberPage !== 0 && page}</span>
       <Button
         onClick={() => {
           setPage(page + 1);
@@ -53,7 +53,11 @@ export const Pagination = ({
             behavior: 'smooth'
           });
         }}
-        disabled={page === +numberPage}
+        style={
+          page === numberPage || numberPage === 0
+            ? { display: 'none' }
+            : { display: 'block' }
+        }
         appearance={ButtonStyleAppearance.pagination}
         icon={<IconRight />}
       ></Button>
@@ -68,6 +72,11 @@ export const Pagination = ({
           });
         }}
         appearance={ButtonStyleAppearance.pagination}
+        style={
+          page === numberPage || numberPage === 0
+            ? { display: 'none' }
+            : { display: 'block' }
+        }
       ></Button>
     </div>
   );

@@ -6,6 +6,9 @@ import { FavoritiesPage } from '~/pages/FavoritiesPage/FavoritiesPage';
 import { MainPage } from '~/pages/MainPage/MainPage';
 import { SearchResultPage } from '~/pages/SearchResultPage/SearchResultPage';
 import { SettingPage } from '~/pages/SettingPage/SettingPage';
+import { SignInPage } from '~/pages/SignInPage/SignIn';
+import { SignUpPage } from '~/pages/SignUpPage/SignUp';
+import { SuccessFormPage } from '~/pages/SuccessPage/SuccessPage';
 import { TrendPage } from '~/pages/TrendPage/TrendPage';
 
 export const routerSchema = createBrowserRouter([
@@ -38,6 +41,18 @@ export const routerSchema = createBrowserRouter([
         element: <FavoritiesPage />
       }
     ]
+  },
+  {
+    path: '/signUp',
+    element: <SignUpPage />
+  },
+  {
+    path: '/signIn',
+    element: <SignInPage />
+  },
+  {
+    path: '/activation/:uid/:token',
+    element: <SuccessFormPage />
   },
   {
     path: '*',

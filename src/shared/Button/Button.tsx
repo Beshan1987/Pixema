@@ -16,7 +16,7 @@ export const Button = ({
   iconRight = null,
   ...passThroughProperties
 }: {
-  text?: string | null;
+  text?: string | number | null;
   appearance?: ButtonStyleAppearances;
   icon?: ReactElement | null;
   iconRight?: ReactElement | null;

@@ -3,31 +3,77 @@ export type Ratings = {
   Value: string;
 };
 
+export interface Pagination {
+  current_page: number;
+  from: number;
+  to: number;
+  per_page: number;
+  last_page: number;
+  total: number;
+  data: CardAPI[];
+}
+
+export interface Genres {
+  display_name: string;
+  id: string;
+  name: string;
+  type: string;
+}
+
+export interface CardApiCertain extends CardAPI {
+  genres: Genres[];
+}
+
+interface Budget {
+  value: number;
+  currency: string;
+}
+
+interface Persons {
+  id: number;
+  photo: string;
+  name: string;
+  enName: string;
+  description: string;
+  profession: string;
+  enProfession: string;
+}
+
+interface SimilarMovies {
+  id: number;
+  name: string;
+  enName: string;
+  alternativeName: string;
+  type: string;
+  poster: Record<'url', string>;
+}
+
+interface Trailer {
+  name: string;
+  type: string;
+  url: string;
+}
+
 export interface CardAPI {
-  Title: string;
-  Year: string;
-  Rated: string;
-  Released: string;
-  Runtime: string;
-  Genre: string;
-  Director: string;
-  Writer: string;
-  Actors: string;
-  Plot: string;
-  Language: string;
-  Country: string;
-  Awards: string;
-  Poster: string;
-  Ratings: Ratings[];
-  Metascore: string;
-  imdbRating: string;
-  imdbVotes: string;
-  Type: string;
-  DVD: string;
-  BoxOffice: string;
-  Production: string;
-  Website: string;
-  Response: string;
+  alternativeName: string;
+  name: string;
+  countries: Record<'name', string>[];
+  description: string;
+  genres: Record<'name', string>[];
+  id: number;
+  movieLength: number;
+  poster: Record<'url', string>;
+  rating: Record<'imdb', number>;
+  type: string;
+  votes: Record<'imdb', number>;
+  year: number;
+  budget: Budget;
+  persons: Persons[];
+  top250: number;
+  productionCompanies: Record<'name', string>;
+  similarMovies: SimilarMovies;
+  videos: Record<'trailers', Trailer[]>;
+  ageRating: number;
 }
 
 export interface SearchCard {
