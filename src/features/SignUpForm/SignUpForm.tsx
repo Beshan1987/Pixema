@@ -1,5 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import { createUser, type CreateUserResponse } from '~/api/createUser';
 import { formSchema } from '~/features/SignUpForm/form.schema';
 import { type FormState } from '~/features/SignUpForm/form.types';
@@ -84,6 +86,10 @@ export const SignUpForm = ({
           ></Button>
         </div>
       </form>
+      <div>
+        <span>Already have an account?</span>
+        <Link to="/signIn"> Sign In</Link>
+      </div>
     </div>
   );
 };

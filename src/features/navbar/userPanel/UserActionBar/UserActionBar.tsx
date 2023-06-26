@@ -1,7 +1,10 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { actions } from '~/features/states/userSlice/userSlice';
+import { Button } from '~/shared/Button/Button';
 import { type RootState } from '~/store/store';
+import { useAppDispatch } from '~/store/store.types';
 
 import styleUserActionBar from './UserAction.module.scss';
 import { UserAction } from '../UserPanel.constant';
@@ -12,6 +15,7 @@ export const UserActionBar = ({ isOpen }: { isOpen: boolean }) => {
       ? state.user.currentUser.data
       : null
   );
+  const dispatch = useAppDispatch();
 
   return user ? (
     <div
@@ -20,7 +24,12 @@ export const UserActionBar = ({ isOpen }: { isOpen: boolean }) => {
     >
       <Link to="/edit ptofile">{UserAction['Edit profile']}</Link>
 
-      <Link to="/">{UserAction['log out']}</Link>
+      <Button
+        text={UserAction['log out']}
+        onClick={() => dispatch(actions.logout())}
+      >
+        {' '}
+      </Button>
     </div>
   ) : (
     <div

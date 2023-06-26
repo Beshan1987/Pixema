@@ -38,6 +38,7 @@
   padding: 0px 0px 20px 20px;
   border-bottom-left-radius: 10px;
   width: 150px;
+  z-index: 1000;
   &[data-open='false'] {
     transform: translateX(0);
   }

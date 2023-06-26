@@ -96,8 +96,8 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
                       (persons) =>
                         persons.enProfession === 'actor' && (
                           <div key={persons.id}>
-                            {persons.enName && <p>persons.enName </p>}
-                            {persons.name && <p>persons.name </p>}
+                            {persons.enName && <p>{persons.enName} </p>}
+                            {!persons.enName && <p>{persons.name} </p>}
 
                             <div>
                               <img

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { type CreateUserResponse } from '~/api/createUser';
 import { ReactComponent as IconPixema } from '~/assets/icons/pixema.svg';
@@ -19,7 +19,9 @@ export const SignUpPage = () => {
   return (
     <>
       <div className={styleSignUp.svg}>
-        <IconPixema />
+        <Link to="/">
+          <IconPixema />
+        </Link>
       </div>
       <div className={styleSignUp.container}>
         {createdUser ? (

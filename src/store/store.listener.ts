@@ -18,15 +18,15 @@ ListenerMiddleWare.startListening({
 ListenerMiddleWare.startListening({
   matcher: createTokens.fulfilled.match,
   effect: ({ payload }) => {
-    localStorage.setItem('@blog/access-token', payload.access);
-    localStorage.setItem('@blog/refresh-token', payload.refresh);
+    localStorage.setItem('@pixema/access-token', payload.access);
+    localStorage.setItem('@pixema/refresh-token', payload.refresh);
   }
 });
 
 ListenerMiddleWare.startListening({
   matcher: userSlice.actions.logout.match,
   effect: () => {
-    localStorage.removeItem('@blog/access-token');
-    localStorage.removeItem('@blog/refresh-token');
+    localStorage.removeItem('@pixema/access-token');
+    localStorage.removeItem('@pixema/refresh-token');
   }
 });

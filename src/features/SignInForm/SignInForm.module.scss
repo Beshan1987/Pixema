@@ -1,10 +1,50 @@
 .container {
   margin: auto;
   padding: 40px;
-  max-width: 600px;
-  border: 1px solid var(--tms-background-medium-color);
-
+  width: 40%;
+  border: 1px solid var(--bg-graphite-pixema);
+  background: var(--bg-dark-pixema);
+  form {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+  }
   & > *:not(:last-child) {
     margin-bottom: 40px;
+  }
+  .BtnWrap {
+    button {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+  div:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    span {
+      color: var(--secondary-grey);
+    }
+    a {
+      color: var(--primary-purple-first);
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  div:last-child {
+    color: var(--error-pixema);
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
   }
 }

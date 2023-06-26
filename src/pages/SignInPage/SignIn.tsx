@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as IconPixema } from '~/assets/icons/pixema.svg';
 import { SignInForm } from '~/features/SignInForm/SignInForm';
 
@@ -7,7 +9,9 @@ export const SignInPage = () => {
   return (
     <>
       <div className={styleSignIn.svg}>
-        <IconPixema />
+        <Link to="/">
+          <IconPixema />
+        </Link>
       </div>
       <div className={styleSignIn.container}>
         <SignInForm />

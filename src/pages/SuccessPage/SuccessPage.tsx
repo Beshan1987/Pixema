@@ -7,6 +7,8 @@ import { SuccessForm } from '~/features/SuccessForm/SuccessForm';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 
+import styleSuccessForm from './Success.module.scss';
+
 export const SuccessFormPage = () => {
   const tokens = useParams<'uid' | 'token'>();
   const [errorMessage, setErrorMessage] = useState('');
@@ -26,34 +28,33 @@ export const SuccessFormPage = () => {
   }, [tokens]);
   if (activationState === 'error') {
     return (
-      <div>
-        <h2>{errorMessage}</h2>
-        <Link to="/">
-          <Button
-            text="Back to home"
-            appearance={ButtonStyleAppearance.system}
-          ></Button>
-        </Link>
+      <div className={styleSuccessForm.container}>
+        <div className={styleSuccessForm.error}>
+          <h2>{errorMessage}</h2>
+          <Link to="/">
+            <Button
+              text="Back to home"
+              appearance={ButtonStyleAppearance.system}
+            ></Button>
+          </Link>
+        </div>
       </div>
     );
   }
   if (activationState === 'success') {
     return (
-      <div>
-        <Link to="/">
-          <Button
-            text="Back to home"
-            appearance={ButtonStyleAppearance.system}
-          ></Button>
-        </Link>
-        <h2>Success</h2>
+      <div className={styleSuccessForm.container}>
         <SuccessForm />
       </div>
     );
   }
 
   if (activationState === 'loading') {
-    return <h2>loading</h2>;
+    return (
+      <div className={styleSuccessForm.container}>
+        <h2>loading</h2>
+      </div>
+    );
   }
   return <div>God knows what is going on here</div>;
 };

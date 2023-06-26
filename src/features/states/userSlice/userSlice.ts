@@ -4,8 +4,8 @@ import { createTokens, fetchUser } from '~/features/states/userSlice/user.api';
 import { type UserSlice } from '~/features/states/userSlice/user.types';
 
 const getInitialState = (): UserSlice => {
-  const access = localStorage.getItem('@blog/access-token');
-  const refresh = localStorage.getItem('@blog/access-token');
+  const access = localStorage.getItem('@pixema/access-token');
+  const refresh = localStorage.getItem('@pixema/access-token');
 
   return {
     currentUser: { status: 'idle' },

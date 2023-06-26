@@ -15,7 +15,7 @@ import { type RootState } from '~/store/store';
 
 import { UserActionBar } from './UserActionBar/UserActionBar';
 import stylePanelUser from './UserPanel.module.scss';
-import { UserName } from './UserPanelInitials';
+import { UserInitials } from './UserPanelInitials';
 
 export const PanelUser = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(true);
@@ -37,7 +37,7 @@ export const PanelUser = () => {
   return user ? (
     <>
       <div className={stylePanelUser.container}>
-        <UserName />
+        <UserInitials />
         <div>{user.username}</div>
         <Button
           icon={isOpenUserActionBar ? <ChevronRight /> : <ChevronDown />}
@@ -72,6 +72,18 @@ export const PanelUser = () => {
           onClick={toggleUserBar}
         ></Button>
       </div>
+      <div className={stylePanelUser.burger}>
+        <Button
+          onClick={toggleBurger}
+          icon={isOpenMenu ? <Burger /> : <IconCancel />}
+          appearance={ButtonStyleAppearance.burger}
+        ></Button>
+      </div>
+      <Menu
+        appearance={MenuStyleAppearance.tablet}
+        isOpen={isOpenMenu}
+        makeOpen={toggleBurger}
+      />
       <UserActionBar isOpen={isOpenUserActionBar} />
     </>
   );

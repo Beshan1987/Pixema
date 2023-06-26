@@ -1,5 +1,9 @@
+import { useEffect } from 'react';
+
+import { useSelector } from 'react-redux';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import { fetchUser } from '~/features/states/userSlice/user.api';
 import { MainLayout } from '~/layouts/mainLayout/MainLayout';
 import { CertainPage } from '~/pages/CertainPage/CertainPage';
 import { FavoritiesPage } from '~/pages/FavoritiesPage/FavoritiesPage';
@@ -10,6 +14,8 @@ import { SignInPage } from '~/pages/SignInPage/SignIn';
 import { SignUpPage } from '~/pages/SignUpPage/SignUp';
 import { SuccessFormPage } from '~/pages/SuccessPage/SuccessPage';
 import { TrendPage } from '~/pages/TrendPage/TrendPage';
+import { type RootState } from '~/store/store';
+import { useAppDispatch } from '~/store/store.types';
 
 export const routerSchema = createBrowserRouter([
   {
@@ -59,4 +65,21 @@ export const routerSchema = createBrowserRouter([
     element: <div>not found</div>
   }
 ]);
-export const AppRouter = () => <RouterProvider router={routerSchema} />;
+export const AppRouter = () => {
+  const dispatch = useAppDispatch();
+  const tokens = useSelector((state: RootState) =>
+    state.user.tokens.status === 'success' ? state.user.tokens.data : null
+  );
+
+  useEffect(() => {
+    if (tokens) {
+      const promise = dispatch(fetchUser());
+
+      return () => {
+        promise.abort('cancelled');
+      };
+    }
+  }, [dispatch, tokens]);
+
+  return <RouterProvider router={routerSchema} />;
+};

@@ -18,6 +18,23 @@
       padding: 20px;
     }
   }
+  div:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    span {
+      color: var(--secondary-grey);
+    }
+    a {
+      color: var(--primary-purple-first);
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  div:last-child {
+    color: var(--error-pixema);
+  }
 }
 
 @media (max-width: 1024px) {

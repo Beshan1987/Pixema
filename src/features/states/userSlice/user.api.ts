@@ -7,7 +7,7 @@ import { type CreateTokenPayload } from '~/features/states/userSlice/user.types'
 export const fetchUser = createAsyncThunk(
   'user/fetch',
   async function (_, thunkAPI) {
-    const accessToken = localStorage.getItem('@blog/access-token');
+    const accessToken = localStorage.getItem('@pixema/access-token');
 
     if (!accessToken) {
       throw new Error('Unauthorized');
