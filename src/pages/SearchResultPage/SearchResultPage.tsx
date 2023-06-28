@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 import { fetchSearch } from '~/api/fetchSearch';
 import { type CardAPI } from '~/entities/Card';
@@ -14,9 +14,12 @@ import styleSearchPage from './SearchPage.module.scss';
 export const SearchResultPage = () => {
   const [card, setCard] = useState<CardAPI[]>([]);
   const [numberPage, setNumberPage] = useState<number>(1);
-  const [page, setPage] = useState<number>(1);
   const [movieAll, setMovieAll] = useState<number>(1);
   const [error, setError] = useState('');
+  const [searchParameters, setSearchParameters] = useSearchParams();
+  const [page, setPage] = useState<number>(
+    Number(searchParameters.get('page')) || 1
+  );
   const navigate = useNavigate();
 
   const { request } = useParams<'request'>();
@@ -29,6 +32,11 @@ export const SearchResultPage = () => {
         setMovieAll(data.total);
       })
       .catch((error: Error) => setError(error.message));
+    setSearchParameters((old) => {
+      old.set('page', `${page}`);
+
+      return old;
+    });
   }, [request, page]);
 
   if (card) {

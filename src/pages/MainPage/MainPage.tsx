@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { useSearchParams } from 'react-router-dom';
+
 import { fetchStart } from '~/api/fetchStart';
 import { type CardAPI } from '~/entities/Card';
 import { Card } from '~/features/Card/Card';
@@ -10,8 +12,12 @@ import { Pagination } from '~/shared/Pagintion/Pagination';
 export const MainPage = () => {
   const [card, setCard] = useState<CardAPI[]>([]);
   const [numberPage, setNumberPage] = useState<number>(0);
-  const [page, setPage] = useState<number>(1);
   const [error, setError] = useState('');
+  const [searchParameters, setSearchParameters] = useSearchParams();
+  const [page, setPage] = useState<number>(
+    Number(searchParameters.get('page')) || 1
+  );
+
   useEffect(() => {
     fetchStart({ page: page })
       .then((data) => {
@@ -19,6 +25,11 @@ export const MainPage = () => {
         setNumberPage(data.pages);
       })
       .catch((error: Error) => setError(error.message));
+    setSearchParameters((old) => {
+      old.set('page', `${page}`);
+
+      return old;
+    });
   }, [page]);
 
   return (
