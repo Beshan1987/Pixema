@@ -19,7 +19,7 @@ export async function fetchStart({
   const headers = new AxiosHeaders();
   headers.set('X-API-KEY', `4CTXY50-B5JMC9P-Q6E6KXJ-WRYJH15`);
   const { data } = await axios<ResponseStartPage>(
-    `https://api.kinopoisk.dev/v1.3/movie?year=2015-2023&limit=10&top250=%21null&page=${page}`,
+    `https://api.kinopoisk.dev/v1.3/movie?year=2015-2023&page=${page}`,
     { headers }
   );
 

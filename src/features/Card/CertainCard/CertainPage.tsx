@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as IconDown } from '~/assets/icons/chevronDown.svg';
 import { ReactComponent as IconIMDB } from '~/assets/icons/IconIMDB.svg';
 import { type CardAPI } from '~/entities/Card';
+import { SwiperCard } from '~/features/Swiper/Swiper';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 
@@ -13,6 +14,15 @@ import styleCard from './CertainCard.module.scss';
 export const CertainCard = ({ card }: { card: CardAPI }) => {
   const navigate = useNavigate();
   const [isOpened, setOpened] = useState(false);
+  const [height, setHeight] = useState(0);
+
+  const referenceComponent: React.RefObject<HTMLInputElement> = createRef();
+
+  useEffect(() => {
+    setHeight(
+      (referenceComponent.current as HTMLElement).getBoundingClientRect().height
+    );
+  }, []);
 
   const toggleDescription = () => {
     setOpened((hasBeenOpened) => !hasBeenOpened);
@@ -49,13 +59,21 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
               {card.ageRating >= 18 && <div>18+</div>}
             </div>
           </div>
-          <p data-open={isOpened}>{card.description}</p>
-          <Button
-            onClick={() => toggleDescription()}
-            appearance={ButtonStyleAppearance.pagination}
-            text={isOpened ? 'close plot' : 'show full plot'}
-            icon={isOpened ? null : <IconDown />}
-          ></Button>
+          <p
+            data-open={isOpened}
+            ref={referenceComponent}
+            style={height > 50 ? { maxHeight: '50px' } : { maxHeight: '100%' }}
+          >
+            {card.description}
+          </p>
+          {height > 50 && (
+            <Button
+              onClick={() => toggleDescription()}
+              appearance={ButtonStyleAppearance.pagination}
+              text={isOpened ? 'close plot' : 'show full plot'}
+              icon={isOpened ? null : <IconDown />}
+            ></Button>
+          )}
           <div>
             <div className={styleCard.shorts}>
               {card.year && (
@@ -64,7 +82,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
                   <span>{card.year}</span>
                 </div>
               )}
-              {card.budget && (
+              {card.budget.value && (
                 <div>
                   <span>Budget</span>
                   <span>
@@ -112,6 +130,10 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
                 </div>
               )}
             </div>
+          </div>
+          <h2>Recomendation</h2>
+          <div className={styleCard.swiperWraper}>
+            <SwiperCard card={card} />
           </div>
         </div>
       </div>

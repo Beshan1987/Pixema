@@ -39,7 +39,7 @@ interface Persons {
   enProfession: string;
 }
 
-interface SimilarMovies {
+export interface SimilarMovies {
   id: number;
   name: string;
   enName: string;
@@ -52,6 +52,12 @@ interface Trailer {
   name: string;
   type: string;
   url: string;
+}
+
+interface Sequels {
+  alternativeName: string;
+  name: string;
+  poster: Record<'url', string>;
 }
 
 export interface CardAPI {
@@ -71,9 +77,10 @@ export interface CardAPI {
   persons: Persons[];
   top250: number;
   productionCompanies: Record<'name', string>;
-  similarMovies: SimilarMovies;
+  similarMovies: SimilarMovies[];
   videos: Record<'trailers', Trailer[]>;
   ageRating: number;
+  sequelsAndPrequels: Sequels[];
 }
 
 export interface SearchCard {
