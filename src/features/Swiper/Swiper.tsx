@@ -16,7 +16,7 @@ export const SwiperCard = ({ card }: { card: CardAPI }) => {
       className={styleSwiper.swiper}
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={30}
-      slidesPerView={4}
+      slidesPerView={3}
       navigation
       scrollbar={{ draggable: true }}
     >

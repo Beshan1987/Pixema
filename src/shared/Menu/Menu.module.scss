@@ -50,6 +50,12 @@
   }
 }
 
+@media (max-width: 500px) {
+  .tablet {
+    margin-top: 120px;
+  }
+}
+
 @media (max-width: 768px) {
   .tablet {
     display: flex;

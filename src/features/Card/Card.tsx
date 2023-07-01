@@ -2,14 +2,8 @@ import { Link } from 'react-router-dom';
 
 import { type CardAPI } from '~/entities/Card';
 
-function getRatingLevel(rate: number) {
-  if (rate > 8) {
-    return 'high';
-  }
-  return rate < 4 ? 'superlow' : 'low';
-}
-
 import styleCard from './Card.module.scss';
+import { getRatingLevel } from './Card.utils';
 
 export const Card = ({ card }: { card: CardAPI[] }) => {
   return (
@@ -32,12 +26,30 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
                   {card.rating.imdb}
                 </span>
               )}
-              <Link to={`/card/${card.id}`}>
+              <Link
+                to={`/card/${card.id}`}
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+                }}
+              >
                 <div>
                   <img src={card.poster.url}></img>
                 </div>
               </Link>
-              <Link to={`/card/${card.id}`}>
+              <Link
+                to={`/card/${card.id}`}
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+                }}
+              >
                 {card.alternativeName && <div>{card.alternativeName}</div>}
                 {card.name && <div>{card.name}</div>}
               </Link>

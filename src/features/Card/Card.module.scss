@@ -8,9 +8,9 @@
 .container {
   display: flex;
   flex-flow: column;
-  flex: 1 1 15%;
-  min-width: 150px;
+  min-width: 180px;
   max-width: 300px;
+  flex: 1 1 15%;
   position: relative;
   div:first-child {
     img {

@@ -26,6 +26,12 @@
     }
     button {
       margin-bottom: 20px;
+      width: 20%;
+      justify-content: center;
+      div {
+        display: flex;
+        justify-content: center;
+      }
     }
     .rating {
       padding: 26px 0;
@@ -60,12 +66,29 @@
         background: var(--error-pixema) !important;
       }
     }
+    .containerActorWrapper {
+      display: flex;
+      flex-flow: column;
+      width: 70%;
+      button {
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        div {
+          justify-content: center;
+        }
+      }
+    }
     .containerActor {
       display: flex;
       flex-flow: column;
       justify-content: stretch;
-      width: 70%;
+      transition: max-height ease-in-out 600ms;
       gap: 10px;
+      overflow: hidden;
+      &[data-open='true'] {
+        max-height: 100% !important;
+      }
       div {
         display: flex;
         gap: 10px;
@@ -147,6 +170,9 @@
   }
   .wrapper .containerDescription .containerActor div {
     width: 80%;
+  }
+  .containerDescription {
+    max-width: 95% !important;
   }
 }
 
