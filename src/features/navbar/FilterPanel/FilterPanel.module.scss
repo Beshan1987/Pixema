@@ -1,6 +1,6 @@
 .container {
   top: 0;
-  right: 0;
+  right: -10px;
   position: absolute;
   height: 100vh;
   width: 518px;
@@ -37,12 +37,28 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    a:hover {
+      text-decoration: none;
+    }
   }
   form {
     display: flex;
     flex-flow: column;
     gap: 30px;
     position: relative;
+  }
+}
+
+.BtnGroupSwitch {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 30px 0;
+  :first-child {
+    border-radius: 10px 0 0 10px;
+  }
+  :last-child {
+    border-radius: 0 10px 10px 0;
   }
 }
 

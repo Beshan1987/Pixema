@@ -67,12 +67,23 @@
 .system {
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: var(--primary-purple-first);
+  background-color: var(--bg-dark-pixema);
   color: var(--text-color);
   display: flex;
   justify-content: center;
-
   &:hover {
     background-color: var(--primary-purple-second);
+  }
+  &[data-open='false'] {
+    background-color: var(--bg-dark-pixema);
+    color: var(--secondary-grey);
+    width: 100%;
+    border: 1px solid var(--secondary-grey);
+  }
+  &[data-open='true'] {
+    background-color: var(--secondary-grey);
+    color: var(--text-color);
+    width: 100%;
+    border: 1px solid var(--secondary-grey);
   }
 }

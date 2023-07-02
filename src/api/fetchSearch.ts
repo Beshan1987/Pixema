@@ -1,19 +1,15 @@
 import axios, { AxiosHeaders } from 'axios';
 
-import { type CardAPI } from '~/entities/Card';
-
-// import { BASE_API_URL } from './constants';
+import {
+  AmountViewsBlank,
+  KeyAdmin,
+  type ResponseApiSearch,
+  cardRequestFields
+} from './constantsApi';
 
 function isCyrillic(request: string) {
   return /[а-я]/i.test(request);
 }
-
-type ResponseSearchtPage = {
-  docs: CardAPI[];
-  page: number;
-  pages: number;
-  total: number;
-};
 
 export async function fetchSearch({
   page,
@@ -21,13 +17,13 @@ export async function fetchSearch({
 }: {
   page: number;
   request: string;
-}): Promise<ResponseSearchtPage> {
+}): Promise<ResponseApiSearch> {
   const headers = new AxiosHeaders();
-  headers.set('X-API-KEY', `4CTXY50-B5JMC9P-Q6E6KXJ-WRYJH15`);
-  const { data } = await axios<ResponseSearchtPage>(
-    `https://api.kinopoisk.dev/v1.3/movie?${
-      isCyrillic(request) ? `&name=${request}` : `&enName=${request}`
-    }&page=${page}`,
+  headers.set('X-API-KEY', `${KeyAdmin}`);
+  const { data } = await axios<ResponseApiSearch>(
+    `https://api.kinopoisk.dev/v1.3/movie?$page=${page}}&audience.count=${AmountViewsBlank}&selectFields=${cardRequestFields.join(
+      ' '
+    )}${isCyrillic(request) ? `&name=${request}` : `&enName=${request}`}`,
     { headers }
   );
 

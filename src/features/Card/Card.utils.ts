@@ -1,8 +1,8 @@
 export function getRatingLevel(rate: number) {
-  if (rate > 7) {
+  if (rate >= 6.5) {
     return 'high';
   }
-  return rate < 5 ? 'superlow' : 'low';
+  return rate < 4 ? 'superlow' : 'low';
 }
 
 export function isTrend({
@@ -12,7 +12,7 @@ export function isTrend({
   year: number;
   audienceCount: number;
 }) {
-  if (year === 2023 && audienceCount > 10_000) {
-    return 'trend';
+  if (year > 2021 && audienceCount > 1_000_000) {
+    return true;
   }
 }

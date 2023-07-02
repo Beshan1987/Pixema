@@ -1,15 +1,15 @@
 import axios, { AxiosHeaders } from 'axios';
 
 import {
-  AmountViewsMovie,
+  AmountViewsMovieTrend,
   KeyAdmin,
-  PeriodYearRealease,
-  RateIMBDSMainPage,
+  RateIMBDTrend,
+  RateYear,
   type ResponseApiSearch,
   cardRequestFields
 } from './constantsApi';
 
-export async function fetchStart({
+export async function fetchTrend({
   page
 }: {
   page: number;
@@ -17,9 +17,9 @@ export async function fetchStart({
   const headers = new AxiosHeaders();
   headers.set('X-API-KEY', `${KeyAdmin}`);
   const { data } = await axios<ResponseApiSearch>(
-    `https://api.kinopoisk.dev/v1.3/movie?year=${PeriodYearRealease}&page=${page}&audience.count=${AmountViewsMovie}&selectFields=${cardRequestFields.join(
+    `https://api.kinopoisk.dev/v1.3/movie?year=${RateYear}&page=${page}&audience.count=${AmountViewsMovieTrend}&selectFields=${cardRequestFields.join(
       ' '
-    )}&rating.imdb=${RateIMBDSMainPage}`,
+    )}&rating.imdb=${RateIMBDTrend}`,
     { headers }
   );
 

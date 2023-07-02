@@ -81,6 +81,7 @@ export interface CardAPI {
   videos: Record<'trailers', Trailer[]>;
   ageRating: number;
   sequelsAndPrequels: Sequels[];
+  audience: Record<'count', number>[];
 }
 
 export interface SearchCard {

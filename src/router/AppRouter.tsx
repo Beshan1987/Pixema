@@ -8,6 +8,7 @@ import { MainLayout } from '~/layouts/mainLayout/MainLayout';
 import { CertainPage } from '~/pages/CertainPage/CertainPage';
 import { FavoritiesPage } from '~/pages/FavoritiesPage/FavoritiesPage';
 import { MainPage } from '~/pages/MainPage/MainPage';
+import { SearchResultFilterPage } from '~/pages/SearchResultFilterPage/SearchResultFilterPage';
 import { SearchResultPage } from '~/pages/SearchResultPage/SearchResultPage';
 import { SettingPage } from '~/pages/SettingPage/SettingPage';
 import { SignInPage } from '~/pages/SignInPage/SignIn';
@@ -45,6 +46,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: '/Favorities',
         element: <FavoritiesPage />
+      },
+      {
+        path: '/searchResultFilter/:request',
+        element: <SearchResultFilterPage />
       }
     ]
   },

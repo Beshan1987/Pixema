@@ -1,4 +1,6 @@
 export interface SearchState {
-  title: string;
+  enName: string;
   year: string;
+  sortField: string;
+  sortType: number;
 }

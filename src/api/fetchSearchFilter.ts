@@ -1,26 +1,26 @@
-import axios from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 
-import { type SearchCard } from '~/entities/Card';
-
-// import { BASE_API_URL } from './constants';
-
-type ResponseSearch = {
-  Response: string;
-  Search: SearchCard[];
-  totalResults: string;
-};
+import {
+  AmountViewsBlank,
+  KeyAdmin,
+  type ResponseApiSearch,
+  cardRequestFields
+} from './constantsApi';
 
 export async function fetchSearchFilter({
-  title,
-  year,
-  page
+  page,
+  request
 }: {
-  title: string;
-  year: string;
   page: number;
-}): Promise<ResponseSearch> {
-  const { data } = await axios<ResponseSearch>(
-    `https://www.omdbapi.com/?apikey=94df158a&s=${title}&y=${year}&p=${page}`
+  request: string;
+}): Promise<ResponseApiSearch> {
+  const headers = new AxiosHeaders();
+  headers.set('X-API-KEY', `${KeyAdmin}`);
+  const { data } = await axios<ResponseApiSearch>(
+    `https://api.kinopoisk.dev/v1.3/movie?page=${page}&${request}&audience.count=${AmountViewsBlank}&selectFields=${cardRequestFields.join(
+      ' '
+    )}`,
+    { headers }
   );
 
   return data;
