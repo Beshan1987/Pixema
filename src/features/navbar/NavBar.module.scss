@@ -10,7 +10,7 @@
   position: relative;
   padding-left: 60px;
   div:nth-child(1) {
-    flex: 1 1 15%;
+    flex: 1 1 10%;
     a {
       svg {
         display: flex;
@@ -24,14 +24,14 @@
     }
   }
   div:nth-child(2) {
-    flex: 1 1 65%;
+    flex: 1 1 70%;
   }
   div:nth-child(3) {
-    flex: 1 1 25%;
+    flex: 1 1 7%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .menuDesktop {
     display: none;
   }
@@ -39,6 +39,9 @@
     padding-left: 0;
     div:nth-child(2) {
       margin-left: 0;
+    }
+    div:nth-child(1) {
+      flex: 1 1 3%;
     }
   }
 }
