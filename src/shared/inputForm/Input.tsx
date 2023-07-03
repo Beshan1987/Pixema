@@ -9,7 +9,7 @@ export const Input = ({
   ...inputProperties
 }: {
   error?: string;
-  label: string;
+  label?: string;
 } & InputHTMLAttributes<HTMLInputElement>) => {
   return (
     <div className={inputStyle.container}>

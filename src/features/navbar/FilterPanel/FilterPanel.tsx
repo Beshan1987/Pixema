@@ -10,7 +10,12 @@ import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { Input } from '~/shared/inputForm/Input';
 import { type RootState } from '~/store/store';
 
-import { ButtonNames, FilterFields } from './constants';
+import {
+  ButtonNames,
+  FilterFields,
+  SortByYearRate,
+  SortUpDown
+} from './constants';
 import { type SearchState } from './Filter.types';
 import { getDefaultFormValues, getRightRequest } from './filter.utils';
 import styleFilterPanel from './FilterPanel.module.scss';
@@ -34,16 +39,16 @@ export const FilterPanel = () => {
 
   useEffect(() => {
     if (isChecked) {
-      setFormState({ ...formState, sortField: 'year' });
-    } else setFormState({ ...formState, sortField: 'rating.imdb' });
+      setFormState({ ...formState, sortField: `${SortByYearRate.sortYear}` });
+    } else
+      setFormState({ ...formState, sortField: `${SortByYearRate.sortRate}` });
   }, [isChecked]);
 
   useEffect(() => {
     if (isCheckedSort) {
-      setFormState({ ...formState, sortType: -1 });
-    } else setFormState({ ...formState, sortType: 1 });
+      setFormState({ ...formState, sortType: `${SortUpDown.sortUp}` });
+    } else setFormState({ ...formState, sortType: `${SortUpDown.sortDown}` });
   }, [isCheckedSort]);
-
   return (
     <div
       className={styleFilterPanel.container}
@@ -92,20 +97,34 @@ export const FilterPanel = () => {
           setFormState(getDefaultFormValues);
         }}
       >
+        <div className={styleFilterPanel.containerSortByYear}>
+          <Input
+            label={FilterFields.years}
+            id={FilterFields.years}
+            type="number"
+            inputMode="numeric"
+            value={formState.yearFrom}
+            placeholder="form"
+            onChange={({ target: { value } }) =>
+              setFormState({ ...formState, yearFrom: value })
+            }
+          />
+          <Input
+            id={FilterFields.years}
+            type="number"
+            inputMode="numeric"
+            value={formState.yearTo}
+            placeholder="to"
+            onChange={({ target: { value } }) =>
+              setFormState({ ...formState, yearTo: value })
+            }
+          />
+        </div>
         <Input
-          label={FilterFields.Year}
-          id={FilterFields.Year}
-          type="number"
-          inputMode="numeric"
-          value={formState.year}
-          onChange={({ target: { value } }) =>
-            setFormState({ ...formState, year: value })
-          }
-        />
-        <Input
-          label={FilterFields['Full or short movie name']}
-          id={FilterFields['Full or short movie name']}
+          label={FilterFields.nameMovie}
+          id={FilterFields.nameMovie}
           value={formState.enName}
+          placeholder="Your text"
           onChange={({ target: { value } }) =>
             setFormState({ ...formState, enName: value })
           }
@@ -114,7 +133,7 @@ export const FilterPanel = () => {
           <Button
             type="button"
             className={styleFilterPanel.btnClean}
-            text={ButtonNames['Clear filter']}
+            text={ButtonNames.clearFilter}
             appearance={ButtonStyleAppearance.pagination}
             onClick={() => setFormState(getDefaultFormValues)}
             disabled={!formState.enName && !formState.year}
@@ -126,7 +145,7 @@ export const FilterPanel = () => {
           >
             <Button
               type="submit"
-              text={ButtonNames['Show results']}
+              text={ButtonNames.showResult}
               appearance={ButtonStyleAppearance.pagination}
               disabled={formState.enName.length < 3}
             ></Button>
