@@ -60,7 +60,6 @@ export const SearchResultFilterPage = () => {
           ) : null}
         </div>
         {error && <div>{error}</div>}
-        <h1>result of searching: {request}</h1>
         <h2>all found: {movieAll} movies</h2>
         <Card card={card} />
         <Pagination

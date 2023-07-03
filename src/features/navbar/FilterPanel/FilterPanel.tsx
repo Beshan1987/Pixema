@@ -122,7 +122,7 @@ export const FilterPanel = () => {
             type="number"
             inputMode="numeric"
             value={formState.yearFrom}
-            placeholder="form"
+            placeholder="from"
             error={
               touchedFields.has('yearFrom') ? formErrors['yearFrom'] : undefined
             }
@@ -141,6 +141,35 @@ export const FilterPanel = () => {
             }
             onChange={({ target: { value } }) =>
               updateFormValues({ yearTo: value })
+            }
+          />
+        </div>
+        <div className={styleFilterPanel.containerSortByYear}>
+          <Input
+            label={FilterFields.rating}
+            id={FilterFields.rating}
+            type="number"
+            inputMode="numeric"
+            value={formState.rateFrom}
+            placeholder="from"
+            error={
+              touchedFields.has('rateFrom') ? formErrors['rateFrom'] : undefined
+            }
+            onChange={({ target: { value } }) =>
+              updateFormValues({ rateFrom: value })
+            }
+          />
+          <Input
+            id={FilterFields.rating}
+            type="number"
+            inputMode="numeric"
+            value={formState.rateTo}
+            placeholder="to"
+            error={
+              touchedFields.has('rateTo') ? formErrors['rateTo'] : undefined
+            }
+            onChange={({ target: { value } }) =>
+              updateFormValues({ rateTo: value })
             }
           />
         </div>

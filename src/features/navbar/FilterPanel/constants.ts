@@ -7,19 +7,15 @@ export const FilterFields = {
   sortUp: 'Low to high',
   sortDown: 'High to low',
   yearFrom: 'yearFrom',
-  yearTo: 'yearTo'
+  yearTo: 'yearTo',
+  rateFrom: 'rateFrom',
+  rateTo: 'rateTo',
+  rating: 'Rating'
 };
 
 export const ButtonNames = {
   showResult: 'Show results',
   clearFilter: 'Clear filter'
-};
-
-export const ValidYearsRealese = {
-  ValidYear: {
-    minYear: '1850',
-    maxYear: '2023'
-  }
 };
 
 export const SortUpDown = {

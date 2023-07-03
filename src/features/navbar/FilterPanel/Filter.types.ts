@@ -5,6 +5,9 @@ export interface SearchState {
   sortField: string;
   sortType: string;
   year?: string;
+  rateFrom: string;
+  rateTo: string;
+  ['rating.imdb']?: string;
 }
 
 export type FormErrors = Partial<Record<keyof SearchState, string>>;

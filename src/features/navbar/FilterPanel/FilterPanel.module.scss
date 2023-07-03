@@ -105,5 +105,9 @@
   .container {
     width: 95%;
     padding: 20px;
+    .containerBtn {
+      position: static !important;
+      margin-top: 0 !important;
+    }
   }
 }
