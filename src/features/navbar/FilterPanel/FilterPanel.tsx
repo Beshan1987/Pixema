@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -17,7 +17,11 @@ import {
   SortUpDown
 } from './constants';
 import { type SearchState } from './Filter.types';
-import { getDefaultFormValues, getRightRequest } from './filter.utils';
+import {
+  getDefaultFormValues,
+  getFormErrors,
+  getRightRequest
+} from './filter.utils';
 import styleFilterPanel from './FilterPanel.module.scss';
 
 export const FilterPanel = () => {
@@ -28,6 +32,20 @@ export const FilterPanel = () => {
   const [formState, setFormState] = useState<SearchState>(getDefaultFormValues);
   const [isChecked, setIsChecked] = useState(true);
   const [isCheckedSort, setIsCheckedSort] = useState(true);
+
+  const [touchedFields, setTouchedFields] = useState<Set<string>>(
+    () => new Set()
+  );
+
+  const updateFormValues = useCallback((newFormValue: Partial<SearchState>) => {
+    setFormState((previousFields) => ({ ...previousFields, ...newFormValue }));
+    setTouchedFields(
+      (previousFields) =>
+        new Set([...previousFields.values(), ...Object.keys(newFormValue)])
+    );
+  }, []);
+
+  const formErrors = useMemo(() => getFormErrors(formState), [formState]);
 
   const chengeCheckBox = () => {
     setIsChecked(!isChecked);
@@ -105,8 +123,11 @@ export const FilterPanel = () => {
             inputMode="numeric"
             value={formState.yearFrom}
             placeholder="form"
+            error={
+              touchedFields.has('yearFrom') ? formErrors['yearFrom'] : undefined
+            }
             onChange={({ target: { value } }) =>
-              setFormState({ ...formState, yearFrom: value })
+              updateFormValues({ yearFrom: value })
             }
           />
           <Input
@@ -115,8 +136,11 @@ export const FilterPanel = () => {
             inputMode="numeric"
             value={formState.yearTo}
             placeholder="to"
+            error={
+              touchedFields.has('yearTo') ? formErrors['yearTo'] : undefined
+            }
             onChange={({ target: { value } }) =>
-              setFormState({ ...formState, yearTo: value })
+              updateFormValues({ yearTo: value })
             }
           />
         </div>
@@ -136,7 +160,9 @@ export const FilterPanel = () => {
             text={ButtonNames.clearFilter}
             appearance={ButtonStyleAppearance.pagination}
             onClick={() => setFormState(getDefaultFormValues)}
-            disabled={!formState.enName && !formState.year}
+            disabled={
+              !formState.yearFrom && !formState.enName && !formState.yearTo
+            }
           ></Button>
           <Link
             to={`/searchResultFilter/${getRightRequest({
@@ -147,7 +173,10 @@ export const FilterPanel = () => {
               type="submit"
               text={ButtonNames.showResult}
               appearance={ButtonStyleAppearance.pagination}
-              disabled={formState.enName.length < 3}
+              disabled={
+                formState.enName.length < 3 ||
+                Object.keys(formErrors).length > 0
+              }
             ></Button>
           </Link>
         </div>

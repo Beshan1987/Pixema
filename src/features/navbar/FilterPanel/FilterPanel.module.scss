@@ -17,14 +17,27 @@
 
   .containerSortByYear {
     display: flex;
-    gap: 40px;
+    gap: 20px;
     width: 100%;
     align-items: end;
+    margin-bottom: 40px;
     div:first-child {
       flex: 1 1 50%;
+      position: relative;
+      div {
+        position: absolute;
+        bottom: -25px;
+        color: var(--error-pixema);
+      }
     }
     div:last-child {
       flex: 1 1 50%;
+      position: relative;
+      div {
+        position: absolute;
+        bottom: -25px;
+        color: var(--error-pixema);
+      }
     }
   }
 
@@ -84,6 +97,13 @@
 
 @media (max-width: 768px) {
   .container {
-    width: 90%;
+    width: 80%;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 95%;
+    padding: 20px;
   }
 }

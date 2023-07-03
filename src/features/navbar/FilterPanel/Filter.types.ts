@@ -6,3 +6,5 @@ export interface SearchState {
   sortType: string;
   year?: string;
 }
+
+export type FormErrors = Partial<Record<keyof SearchState, string>>;
