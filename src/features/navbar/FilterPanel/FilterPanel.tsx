@@ -179,7 +179,7 @@ export const FilterPanel = () => {
           value={formState.enName}
           placeholder="Your text"
           onChange={({ target: { value } }) =>
-            setFormState({ ...formState, enName: value })
+            setFormState({ ...formState, enName: value, name: value })
           }
         />
         <div className={styleFilterPanel.containerBtn}>
@@ -190,7 +190,12 @@ export const FilterPanel = () => {
             appearance={ButtonStyleAppearance.pagination}
             onClick={() => setFormState(getDefaultFormValues)}
             disabled={
-              !formState.yearFrom && !formState.enName && !formState.yearTo
+              Object.entries(formState).filter(
+                (item) =>
+                  item[0] !== 'sortField' &&
+                  item[0] !== 'sortType' &&
+                  item[1] !== ''
+              ).length !== 2
             }
           ></Button>
           <Link
@@ -202,10 +207,7 @@ export const FilterPanel = () => {
               type="submit"
               text={ButtonNames.showResult}
               appearance={ButtonStyleAppearance.pagination}
-              disabled={
-                formState.enName.length < 3 ||
-                Object.keys(formErrors).length > 0
-              }
+              disabled={Object.keys(formErrors).length > 0}
             ></Button>
           </Link>
         </div>

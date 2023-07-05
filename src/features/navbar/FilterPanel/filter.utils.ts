@@ -1,8 +1,11 @@
+import { isCyrillic } from '~/api/fetchSearch';
+
 import { type FormErrors, type SearchState } from './Filter.types';
 
 export function getDefaultFormValues(): SearchState {
   return {
     enName: '',
+    name: '',
     yearFrom: '',
     yearTo: '',
     sortField: 'year',
@@ -19,9 +22,6 @@ const RATE_VALID = { rateMax: 10, rateMin: 0 };
 
 //check Year field
 function isValidYearTo(year: SearchState['yearTo']): boolean {
-  return year.length === MIN_YEAR_LENGTH || !year;
-}
-function isValidYearFrom(year: SearchState['yearFrom']): boolean {
   return year.length === MIN_YEAR_LENGTH || !year;
 }
 
@@ -82,10 +82,6 @@ export function getFormErrors(formValues: SearchState): FormErrors {
     errors.yearTo = '4 digit number';
   }
 
-  if (!isValidYearFrom(formValues.yearFrom)) {
-    errors.yearFrom = '4 digit number';
-  }
-
   if (!isValidYearTo(formValues.yearTo)) {
     errors.yearTo = '4 digit number';
   }
@@ -128,7 +124,7 @@ export function getFormErrors(formValues: SearchState): FormErrors {
 
 export const getRightRequest = ({ request }: { request: SearchState }) => {
   // get Year period request
-  const { yearFrom, yearTo } = request;
+  const { yearFrom, yearTo, enName, rateFrom, rateTo } = request;
   if (!!yearFrom && !!yearTo) {
     request['year'] = `${yearFrom} - ${yearTo}`;
   }
@@ -142,7 +138,6 @@ export const getRightRequest = ({ request }: { request: SearchState }) => {
     request['year'] = `${yearFrom} - ${new Date().getFullYear()}`;
   }
   // get Rating interval request
-  const { rateFrom, rateTo } = request;
   if (!!rateFrom && !!rateTo) {
     request['rating.imdb'] = `${rateFrom} - ${rateTo}`;
   }
@@ -156,6 +151,9 @@ export const getRightRequest = ({ request }: { request: SearchState }) => {
     request['rating.imdb'] = `${rateFrom} - ${RATE_VALID.rateMax}`;
   }
 
+  // get right request by language
+  isCyrillic(enName) ? (request['enName'] = '') : (request['name'] = '');
+
   //clean request and get the Whole Need request
   return (
     '' +
@@ -165,7 +163,8 @@ export const getRightRequest = ({ request }: { request: SearchState }) => {
           item[0] !== 'rateFrom' &&
           item[0] !== 'rateTo' &&
           item[0] !== 'yearTo' &&
-          item[0] !== 'yearFrom'
+          item[0] !== 'yearFrom' &&
+          item[1] !== ''
       )
       .map((item) => item.join('='))
       .join('&')

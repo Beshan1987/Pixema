@@ -7,7 +7,7 @@ import {
   cardRequestFields
 } from './constantsApi';
 
-function isCyrillic(request: string) {
+export function isCyrillic(request: string) {
   return /[а-я]/i.test(request);
 }
 

@@ -1,7 +1,8 @@
 .container {
   top: 0;
   right: -10px;
-  position: absolute;
+  position: fixed;
+  overflow-y: auto;
   height: 100vh;
   width: 518px;
   background-color: var(--bg-dark-pixema);
@@ -13,14 +14,13 @@
   &[data-open='true'] {
     transform: translateX(0);
   }
-  z-index: 1000;
+  z-index: 1010;
 
   .containerSortByYear {
     display: flex;
     gap: 20px;
     width: 100%;
     align-items: end;
-    margin-bottom: 40px;
     div:first-child {
       flex: 1 1 50%;
       position: relative;

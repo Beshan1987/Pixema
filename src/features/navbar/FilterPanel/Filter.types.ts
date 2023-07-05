@@ -1,5 +1,6 @@
 export interface SearchState {
   enName: string;
+  name?: string;
   yearFrom: string;
   yearTo: string;
   sortField: string;

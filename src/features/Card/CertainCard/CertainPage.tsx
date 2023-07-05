@@ -50,7 +50,11 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
       <div className={styleCard.wrapper}>
         <div className={styleCard.containerImg}>
           <div>
-            <img src={card.poster.url}></img>
+            {card.poster ? (
+              <img src={card.poster.url}></img>
+            ) : (
+              <img src="/src/assets/BG/NoPoster.jpeg"></img>
+            )}
           </div>
         </div>
         <div className={styleCard.containerDescription}>

@@ -152,6 +152,15 @@
   }
 }
 
+@media (max-width: 500px) {
+  .wrapper .containerDescription button {
+    width: 35%;
+  }
+  .wrapper .containerDescription .containerActorWrapper button {
+    width: 65%;
+  }
+}
+
 @media (max-width: 768px) {
   .wrapper {
     gap: 20px;
