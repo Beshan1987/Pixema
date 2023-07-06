@@ -20,7 +20,8 @@ import { type SearchState } from './Filter.types';
 import {
   getDefaultFormValues,
   getFormErrors,
-  getRightRequest
+  getRightRequest,
+  isDisabledClearButton
 } from './filter.utils';
 import styleFilterPanel from './FilterPanel.module.scss';
 
@@ -67,6 +68,7 @@ export const FilterPanel = () => {
       setFormState({ ...formState, sortType: `${SortUpDown.sortUp}` });
     } else setFormState({ ...formState, sortType: `${SortUpDown.sortDown}` });
   }, [isCheckedSort]);
+
   return (
     <div
       className={styleFilterPanel.container}
@@ -189,14 +191,7 @@ export const FilterPanel = () => {
             text={ButtonNames.clearFilter}
             appearance={ButtonStyleAppearance.pagination}
             onClick={() => setFormState(getDefaultFormValues)}
-            disabled={
-              Object.entries(formState).filter(
-                (item) =>
-                  item[0] !== 'sortField' &&
-                  item[0] !== 'sortType' &&
-                  item[1] !== ''
-              ).length !== 2
-            }
+            disabled={isDisabledClearButton(formState)}
           ></Button>
           <Link
             to={`/searchResultFilter/${getRightRequest({

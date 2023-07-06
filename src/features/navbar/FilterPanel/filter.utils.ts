@@ -2,6 +2,19 @@ import { isCyrillic } from '~/api/fetchSearch';
 
 import { type FormErrors, type SearchState } from './Filter.types';
 
+export const isDisabledClearButton = (formState: SearchState): boolean => {
+  return (
+    Object.entries(formState).filter(
+      (item) =>
+        item[0] !== 'sortField' &&
+        item[0] !== 'sortType' &&
+        item[0] !== 'year' &&
+        item[0] !== 'rating.imdb' &&
+        item[1] !== ''
+    ).length === 0
+  );
+};
+
 export function getDefaultFormValues(): SearchState {
   return {
     enName: '',
