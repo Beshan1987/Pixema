@@ -79,14 +79,14 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
             data-open={isOpened}
             ref={referenceComponent}
             style={
-              heightDescriptionBar > 50
+              heightDescriptionBar >= 50
                 ? { maxHeight: '50px' }
                 : { maxHeight: '100%' }
             }
           >
             {card.description}
           </p>
-          {heightDescriptionBar > 50 && (
+          {heightDescriptionBar >= 50 && (
             <Button
               onClick={() => toggleDescription()}
               appearance={ButtonStyleAppearance.pagination}
@@ -170,6 +170,13 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
               )}
             </div>
           </div>
+          <h2>Trailer</h2>
+          <iframe
+            src={card.videos.trailers[0].url}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
           <h2>Recomendation</h2>
           <div className={styleCard.swiperWraper}>
             <SwiperCard card={card} />
