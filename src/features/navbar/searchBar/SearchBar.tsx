@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as FilterIcon } from '~/assets/icons/FilterIcon.svg';
 import { ReactComponent as IconFilterOpened } from '~/assets/icons/IconFilterOpened.svg';
@@ -20,6 +20,8 @@ export const SearchBar = () => {
     getDefaultFormValues()
   );
 
+  const navigate = useNavigate();
+
   const isFilterState = useSelector(
     (state: RootState) => state.filterSwitch.isOpen
   );
@@ -33,6 +35,7 @@ export const SearchBar = () => {
           className={styleSearch.container}
           onSubmit={(event) => {
             event.preventDefault();
+            navigate(`/searchResult/${formState.request}`);
             setFormState(getDefaultFormValues);
           }}
         >
@@ -43,9 +46,6 @@ export const SearchBar = () => {
               setFormState({ request: value })
             }
           />
-          <Link to={`/searchResult/${formState.request}`}>
-            <Button onClick={() => setFormState(getDefaultFormValues)}></Button>
-          </Link>
         </form>
         <Button
           icon={isFilterState ? <IconFilterOpened /> : <FilterIcon />}

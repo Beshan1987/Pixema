@@ -78,6 +78,13 @@
     div:nth-child(2) {
       width: 100%;
     }
+    div:nth-child(4) {
+      p {
+        color: var(--text-color);
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+    }
   }
 }
 
@@ -94,10 +101,22 @@
     border-radius: 0 10px 10px 0;
   }
 }
-
-@media (max-width: 768px) {
-  .container {
-    width: 80%;
+.genresWrapper {
+  background: var(--bg-graphite-pixema);
+  border-radius: 10px;
+  p {
+    color: var(--text-color);
+  }
+  .containerCheckBoxes {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    display: grid;
+    height: 200px;
+    overflow: scroll;
+    position: static !important;
+    span:nth-child(2) {
+      color: var(--text-color);
+    }
   }
 }
 
@@ -109,5 +128,19 @@
       position: static !important;
       margin-top: 0 !important;
     }
+  }
+  .genresWrapper {
+    .containerCheckBoxes {
+      span:nth-child(2) {
+        color: var(--text-color);
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
   }
 }

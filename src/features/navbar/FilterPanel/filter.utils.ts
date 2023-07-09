@@ -26,7 +26,8 @@ export function getDefaultFormValues(): SearchState {
     year: '',
     rateFrom: '',
     rateTo: '',
-    ['rating.imdb']: ''
+    ['rating.imdb']: '',
+    ['genres.name']: ''
   };
 }
 
@@ -137,7 +138,14 @@ export function getFormErrors(formValues: SearchState): FormErrors {
 
 export const getRightRequest = ({ request }: { request: SearchState }) => {
   // get Year period request
-  const { yearFrom, yearTo, enName, rateFrom, rateTo } = request;
+  const {
+    yearFrom,
+    yearTo,
+    enName,
+    rateFrom,
+    rateTo,
+    'genres.name': genres
+  } = request;
   if (!!yearFrom && !!yearTo) {
     request['year'] = `${yearFrom} - ${yearTo}`;
   }
@@ -163,23 +171,31 @@ export const getRightRequest = ({ request }: { request: SearchState }) => {
   if (!!rateFrom && !rateTo) {
     request['rating.imdb'] = `${rateFrom} - ${RATE_VALID.rateMax}`;
   }
+  if (genres !== '') {
+    request['genres.name'] = genres
+      ?.split(' ')
+      .map((item) => (item === '' ? null : (item = `genres.name=${item}`)))
+      .join('&');
 
-  // get right request by language
-  isCyrillic(enName) ? (request['enName'] = '') : (request['name'] = '');
+    // get right request by language
+    isCyrillic(enName) ? (request['enName'] = '') : (request['name'] = '');
 
-  //clean request and get the Whole Need request
-  return (
-    '' +
-    Object.entries(request)
-      .filter(
-        (item) =>
-          item[0] !== 'rateFrom' &&
-          item[0] !== 'rateTo' &&
-          item[0] !== 'yearTo' &&
-          item[0] !== 'yearFrom' &&
-          item[1] !== ''
-      )
-      .map((item) => item.join('='))
-      .join('&')
-  );
+    //clean request and get the Whole Need request
+    return (
+      '' +
+      Object.entries(request)
+        .filter(
+          (item) =>
+            item[0] !== 'rateFrom' &&
+            item[0] !== 'rateTo' &&
+            item[0] !== 'yearTo' &&
+            item[0] !== 'yearFrom' &&
+            item[1] !== ''
+        )
+        .map((item) =>
+          item[0] === 'genres.name' ? (item = item[1]) : item.join('=')
+        )
+        .join('&')
+    );
+  }
 };

@@ -1,7 +1,6 @@
 export const FilterFields = {
   years: 'Years',
   nameMovie: 'Full or short movie name',
-  genre: 'Genre',
   sortYear: 'Sort by Year',
   sortRating: 'Sort by Rating',
   sortUp: 'Low to high',
@@ -10,7 +9,8 @@ export const FilterFields = {
   yearTo: 'yearTo',
   rateFrom: 'rateFrom',
   rateTo: 'rateTo',
-  rating: 'Rating'
+  rating: 'Rating',
+  genres: 'Genres'
 };
 
 export const ButtonNames = {

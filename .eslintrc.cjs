@@ -16,7 +16,7 @@ module.exports = {
   overrides: [{
     files: ['vite.config.ts'],
     rules: {
-      'import/no-default-export': 'off'
+      'import/no-default-export': 'off',
     }
   }],
   parser: '@typescript-eslint/parser',
@@ -37,6 +37,9 @@ module.exports = {
         prefer: 'type-imports'
       }
     ],
+    "@typescript-eslint/no-unsafe-return": "warn",
+    "@typescript-eslint/no-unsafe-assignment":"warn",
+    "@typescript-eslint/restrict-template-expressions":"warn",
     '@typescript-eslint/naming-convention': [
       'error',
       {

@@ -1,8 +1,12 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+import { fetchGetGenres, type Genres } from '~/api/fetchGetGenres';
 import { ReactComponent as IconCancel } from '~/assets/icons/IconCancel.svg';
 import { switchFilterState } from '~/features/states/filterSlice/filterSlice';
 import { Button } from '~/shared/Button/Button';
@@ -33,6 +37,21 @@ export const FilterPanel = () => {
   const [formState, setFormState] = useState<SearchState>(getDefaultFormValues);
   const [isChecked, setIsChecked] = useState(true);
   const [isCheckedSort, setIsCheckedSort] = useState(true);
+  const [genres, setGenres] = useState<Genres[]>([]);
+  const [genresAPI, setGenresAPI] = useState<string[]>([]);
+  const navigate = useNavigate();
+
+  const handleChange = (value: { target: HTMLInputElement }) => {
+    if (value.target.checked) {
+      setGenresAPI([...genresAPI, value.target.value]);
+    } else {
+      setGenresAPI(genresAPI.filter((item) => item !== value.target.value));
+    }
+  };
+
+  useEffect(() => {
+    setFormState({ ...formState, 'genres.name': genresAPI.join(' ') });
+  }, [genresAPI]);
 
   const [touchedFields, setTouchedFields] = useState<Set<string>>(
     () => new Set()
@@ -44,6 +63,12 @@ export const FilterPanel = () => {
       (previousFields) =>
         new Set([...previousFields.values(), ...Object.keys(newFormValue)])
     );
+  }, []);
+
+  useEffect(() => {
+    fetchGetGenres()
+      .then((genres) => setGenres(genres))
+      .catch((error: Error) => error);
   }, []);
 
   const formErrors = useMemo(() => getFormErrors(formState), [formState]);
@@ -184,6 +209,28 @@ export const FilterPanel = () => {
             setFormState({ ...formState, enName: value, name: value })
           }
         />
+        <div>
+          <p>{FilterFields.genres}</p>
+          <div className={styleFilterPanel.genresWrapper}>
+            <div className={styleFilterPanel.containerCheckBoxes}>
+              {genres.map((genres) => (
+                <FormGroup key={genres.name}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        value={genres.name}
+                        color="secondary"
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': 'controlled' }}
+                      />
+                    }
+                    label={genres.name}
+                  />
+                </FormGroup>
+              ))}
+            </div>
+          </div>
+        </div>
         <div className={styleFilterPanel.containerBtn}>
           <Button
             type="button"
@@ -193,18 +240,19 @@ export const FilterPanel = () => {
             onClick={() => setFormState(getDefaultFormValues)}
             disabled={isDisabledClearButton(formState)}
           ></Button>
-          <Link
-            to={`/searchResultFilter/${getRightRequest({
-              request: formState
-            })}`}
-          >
-            <Button
-              type="submit"
-              text={ButtonNames.showResult}
-              appearance={ButtonStyleAppearance.pagination}
-              disabled={Object.keys(formErrors).length > 0}
-            ></Button>
-          </Link>
+          <Button
+            onClick={() =>
+              navigate(
+                `/searchResultFilter/${getRightRequest({
+                  request: formState
+                })}`
+              )
+            }
+            type="submit"
+            text={ButtonNames.showResult}
+            appearance={ButtonStyleAppearance.pagination}
+            disabled={Object.keys(formErrors).length > 0}
+          ></Button>
         </div>
       </form>
     </div>
