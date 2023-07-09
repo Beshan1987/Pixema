@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
+import { type SelectChangeEvent } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
+import { type Countries, fetchGetCountries } from '~/api/fetchGetCountries';
 import { fetchGetGenres, type Genres } from '~/api/fetchGetGenres';
 import { ReactComponent as IconCancel } from '~/assets/icons/IconCancel.svg';
+import { MultipleSelectChip } from '~/features/SelectChip/SelectChip';
 import { switchFilterState } from '~/features/states/filterSlice/filterSlice';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
@@ -39,14 +42,25 @@ export const FilterPanel = () => {
   const [isCheckedSort, setIsCheckedSort] = useState(true);
   const [genres, setGenres] = useState<Genres[]>([]);
   const [genresAPI, setGenresAPI] = useState<string[]>([]);
+  const [countries, setcountries] = useState<Countries[]>([]);
+  const [countriesAPI, setCountriesAPI] = useState<string[]>([]);
   const navigate = useNavigate();
 
-  const handleChange = (value: { target: HTMLInputElement }) => {
-    if (value.target.checked) {
-      setGenresAPI([...genresAPI, value.target.value]);
+  const handleChange = (event: { target: HTMLInputElement }) => {
+    if (event.target.checked) {
+      setGenresAPI([...genresAPI, event.target.value]);
     } else {
-      setGenresAPI(genresAPI.filter((item) => item !== value.target.value));
+      setGenresAPI(genresAPI.filter((item) => item !== event.target.value));
     }
+  };
+
+  const handleChangeCountries = (
+    event: SelectChangeEvent<typeof countriesAPI>
+  ) => {
+    const {
+      target: { value }
+    } = event;
+    setCountriesAPI(typeof value === 'string' ? value.split(',') : value);
   };
 
   useEffect(() => {
@@ -68,6 +82,9 @@ export const FilterPanel = () => {
   useEffect(() => {
     fetchGetGenres()
       .then((genres) => setGenres(genres))
+      .catch((error: Error) => error);
+    fetchGetCountries()
+      .then((countries) => setcountries(countries))
       .catch((error: Error) => error);
   }, []);
 
@@ -222,6 +239,7 @@ export const FilterPanel = () => {
                         color="secondary"
                         onChange={handleChange}
                         inputProps={{ 'aria-label': 'controlled' }}
+                        checked={genresAPI.includes(genres.name)}
                       />
                     }
                     label={genres.name}
@@ -231,6 +249,22 @@ export const FilterPanel = () => {
             </div>
           </div>
         </div>
+        {/* <div>
+          
+          <select onChange={handleChangeCountries} multiple>
+          {countries.map((countries)=>(
+            <option key={countries.name} value={countries.name}>
+              {countries.name}
+            </option>
+          ))}
+          </select>
+          <span>{countriesAPI}</span>
+        </div> */}
+        <MultipleSelectChip
+          countries={countries}
+          countriesAPI={countriesAPI}
+          handleChange={handleChangeCountries}
+        />
         <div className={styleFilterPanel.containerBtn}>
           <Button
             type="button"
