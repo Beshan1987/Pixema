@@ -49,6 +49,14 @@
   }
 }
 
+@media (max-width: 500px) {
+  .container {
+    button {
+      width: 50%;
+    }
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     margin-right: 0;

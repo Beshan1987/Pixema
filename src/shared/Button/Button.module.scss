@@ -24,6 +24,9 @@
 
 .filter {
   background-color: var(--bg-graphite-pixema);
+  svg path {
+    fill: var(--text-color);
+  }
 }
 
 .user {
@@ -35,6 +38,16 @@
   color: var(--primary-purple-first);
   &:hover {
     fill: var(--primary-purple-first);
+  }
+}
+
+.cancel {
+  background-color: transparent;
+  &:hover {
+    fill: var(--primary-purple-first);
+  }
+  svg path {
+    fill: var(--text-color);
   }
 }
 
@@ -67,7 +80,7 @@
 .system {
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: var(--bg-dark-pixema);
+  background-color: var(--bg-graphite-pixema);
   color: var(--text-color);
   display: flex;
   justify-content: center;

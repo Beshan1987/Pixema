@@ -67,6 +67,10 @@ export const FilterPanel = () => {
     setFormState({ ...formState, 'genres.name': genresAPI.join(' ') });
   }, [genresAPI]);
 
+  useEffect(() => {
+    setFormState({ ...formState, 'countries.name': countriesAPI.join(' ') });
+  }, [countriesAPI]);
+
   const [touchedFields, setTouchedFields] = useState<Set<string>>(
     () => new Set()
   );
@@ -121,7 +125,7 @@ export const FilterPanel = () => {
         <Button
           className={styleFilterPanel.btnCancel}
           icon={<IconCancel />}
-          appearance={ButtonStyleAppearance.chevron}
+          appearance={ButtonStyleAppearance.cancel}
           onClick={() => dispatch(switchFilterState())}
         />
       </div>
@@ -217,6 +221,11 @@ export const FilterPanel = () => {
             }
           />
         </div>
+        <MultipleSelectChip
+          countries={countries}
+          countriesAPI={countriesAPI}
+          handleChange={handleChangeCountries}
+        />
         <Input
           label={FilterFields.nameMovie}
           id={FilterFields.nameMovie}
@@ -249,22 +258,7 @@ export const FilterPanel = () => {
             </div>
           </div>
         </div>
-        {/* <div>
-          
-          <select onChange={handleChangeCountries} multiple>
-          {countries.map((countries)=>(
-            <option key={countries.name} value={countries.name}>
-              {countries.name}
-            </option>
-          ))}
-          </select>
-          <span>{countriesAPI}</span>
-        </div> */}
-        <MultipleSelectChip
-          countries={countries}
-          countriesAPI={countriesAPI}
-          handleChange={handleChangeCountries}
-        />
+
         <div className={styleFilterPanel.containerBtn}>
           <Button
             type="button"

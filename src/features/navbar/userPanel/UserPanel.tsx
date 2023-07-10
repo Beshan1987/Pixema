@@ -38,7 +38,7 @@ export const PanelUser = () => {
     <>
       <div className={stylePanelUser.container}>
         <UserInitials />
-        <div>{user.username}</div>
+        <div className={stylePanelUser.userNameWrapper}>{user.username}</div>
         <Button
           icon={isOpenUserActionBar ? <ChevronRight /> : <ChevronDown />}
           appearance={ButtonStyleAppearance.chevron}

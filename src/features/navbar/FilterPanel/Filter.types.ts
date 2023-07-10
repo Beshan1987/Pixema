@@ -10,6 +10,7 @@ export interface SearchState {
   rateTo: string;
   ['rating.imdb']?: string;
   ['genres.name']?: string;
+  ['countries.name']?: string;
 }
 
 export type FormErrors = Partial<Record<keyof SearchState, string>>;

@@ -10,7 +10,8 @@ export const FilterFields = {
   rateFrom: 'rateFrom',
   rateTo: 'rateTo',
   rating: 'Rating',
-  genres: 'Genres'
+  genres: 'Genres',
+  countries: 'Select Country'
 };
 
 export const ButtonNames = {

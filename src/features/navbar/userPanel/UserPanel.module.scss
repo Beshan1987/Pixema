@@ -13,6 +13,10 @@
     justify-content: center;
     align-items: center;
   }
+  .userNameWrapper {
+    width: 50px;
+  }
+
   :nth-child(2) {
     max-width: 150px;
   }
@@ -29,6 +33,10 @@
 
 .burger {
   display: none;
+}
+
+.userNameWrapper {
+  width: 50px;
 }
 
 @media (max-width: 500px) {

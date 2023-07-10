@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { ReactComponent as FilterIcon } from '~/assets/icons/FilterIcon.svg';
+import { ReactComponent as FilterIcon } from '~/assets/icons/Filter.svg';
 import { ReactComponent as IconFilterOpened } from '~/assets/icons/IconFilterOpened.svg';
 import { switchFilterState } from '~/features/states/filterSlice/filterSlice';
 import { Button } from '~/shared/Button/Button';
