@@ -21,6 +21,7 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
             {getRatingLevel(card.rating.imdb) === 'high' && (
               // <span className={styleCard.rateHigh}>{card.rating.imdb}</span>
               <span
+                key={card.rating.imdb}
                 className={
                   isTrend({
                     year: card.year,
@@ -52,7 +53,10 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
             >
               <div>
                 {card.poster ? (
-                  <img src={card.poster.url}></img>
+                  <img
+                    src={card.poster.url}
+                    key={card.poster.url}
+                  ></img>
                 ) : (
                   <img src="/src/assets/BG/NoPoster.jpeg"></img>
                 )}

@@ -23,6 +23,9 @@
       text-decoration: none;
     }
   }
+  button {
+    display: none;
+  }
 }
 
 .tablet {
@@ -40,6 +43,19 @@
   z-index: 1000;
   &[data-open='false'] {
     transform: translateX(0);
+  }
+  button {
+    display: block;
+    color: var(--secondary-grey);
+    &:hover {
+      color: var(--primary-purple-second);
+      &:active {
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }
 

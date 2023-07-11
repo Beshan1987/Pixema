@@ -273,7 +273,8 @@ export const FilterPanel = () => {
               navigate(
                 `/searchResultFilter/${getRightRequest({
                   request: formState
-                })}`
+                })}`,
+                { replace: false }
               )
             }
             type="submit"

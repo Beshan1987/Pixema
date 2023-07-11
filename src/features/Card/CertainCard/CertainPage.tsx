@@ -120,7 +120,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
                   </span>
                 </div>
               )}
-              {card.ageRating && (
+              {card.ageRating !== 0 && (
                 <div>
                   <span>Age limit</span>
                   <span>{card.ageRating}+</span>
@@ -170,17 +170,25 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
               )}
             </div>
           </div>
-          <h2>Trailer</h2>
-          <iframe
-            src={card.videos.trailers[0].url}
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
-          <h2>Recomendation</h2>
-          <div className={styleCard.swiperWraper}>
-            <SwiperCard card={card} />
-          </div>
+          {card.videos !== undefined && (
+            <>
+              <h2>Trailer</h2>
+              <iframe
+                src={card.videos.trailers[0].url}
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            </>
+          )}
+          {card.similarMovies.length > 0 && (
+            <>
+              <h2>Recomendation</h2>
+              <div className={styleCard.swiperWraper}>
+                <SwiperCard card={card} />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

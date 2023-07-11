@@ -7,11 +7,13 @@ import { ReactComponent as ChevronDown } from '~/assets/icons/chevronDown.svg';
 import { ReactComponent as ChevronRight } from '~/assets/icons/chevronRight.svg';
 import { ReactComponent as IconCancel } from '~/assets/icons/IconCancel.svg';
 import { ReactComponent as IconUser } from '~/assets/icons/IconUser.svg';
+import { actions } from '~/features/states/userSlice/userSlice';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
 import { Menu } from '~/shared/Menu/Menu';
 import { MenuStyleAppearance } from '~/shared/Menu/Menu.types';
 import { type RootState } from '~/store/store';
+import { useAppDispatch } from '~/store/store.types';
 
 import { UserActionBar } from './UserActionBar/UserActionBar';
 import stylePanelUser from './UserPanel.module.scss';
@@ -26,6 +28,9 @@ export const PanelUser = () => {
       ? state.user.currentUser.data
       : null
   );
+
+  const dispatch = useAppDispatch();
+
   const toggleBurger = () => {
     setIsOpenMenu((hasBeenOpened) => !hasBeenOpened);
   };
@@ -56,6 +61,8 @@ export const PanelUser = () => {
         appearance={MenuStyleAppearance.tablet}
         isOpen={isOpenMenu}
         makeOpen={toggleBurger}
+        user={user}
+        onLogOut={() => dispatch(actions.logout())}
       />
       <UserActionBar isOpen={isOpenUserActionBar} />
     </>
@@ -83,6 +90,7 @@ export const PanelUser = () => {
         appearance={MenuStyleAppearance.tablet}
         isOpen={isOpenMenu}
         makeOpen={toggleBurger}
+        user={user}
       />
       <UserActionBar isOpen={isOpenUserActionBar} />
     </>

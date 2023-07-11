@@ -10,7 +10,15 @@ export const cardRequestFields = [
   'type',
   'audience',
   'alternativeName',
-  'id'
+  'id',
+  'videos',
+  'ageRating',
+  'persons',
+  'countries',
+  'genres',
+  'movieLength',
+  'Budget',
+  'similarMovies'
 ];
 
 export const KeyAdmin = '123JCBS-NWP4J7K-G8E3WRF-VYBPZMZ';
