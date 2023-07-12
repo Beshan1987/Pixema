@@ -111,6 +111,16 @@
         }
       }
     }
+    a:last-child {
+      display: block;
+      background-color: var(--bg-graphite-pixema);
+      padding: 5px 20px;
+      border-radius: 10px;
+      color: var(--text-color);
+      &:hover {
+        color: var(--primary-purple-first);
+      }
+    }
   }
 }
 

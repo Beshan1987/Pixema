@@ -89,7 +89,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
           {heightDescriptionBar >= 50 && (
             <Button
               onClick={() => toggleDescription()}
-              appearance={ButtonStyleAppearance.pagination}
+              appearance={ButtonStyleAppearance.system}
               text={isOpened ? 'close plot' : null}
               icon={isOpened ? null : <IconDown />}
             ></Button>
@@ -160,7 +160,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
                     {heightActorsBar > 180 && (
                       <Button
                         onClick={() => toggleActors()}
-                        appearance={ButtonStyleAppearance.pagination}
+                        appearance={ButtonStyleAppearance.system}
                         text={isFullActors ? 'close list' : null}
                         icon={isFullActors ? null : <IconDown />}
                       ></Button>
@@ -170,7 +170,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
               )}
             </div>
           </div>
-          {card.videos !== undefined && (
+          {card.videos !== undefined && card.videos.trailers.length > 0 && (
             <>
               <h2>Trailer</h2>
               <iframe

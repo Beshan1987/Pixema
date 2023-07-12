@@ -5,7 +5,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { type Countries, fetchGetCountries } from '~/api/fetchGetCountries';
 import { fetchGetGenres, type Genres } from '~/api/fetchGetGenres';
@@ -44,7 +44,6 @@ export const FilterPanel = () => {
   const [genresAPI, setGenresAPI] = useState<string[]>([]);
   const [countries, setcountries] = useState<Countries[]>([]);
   const [countriesAPI, setCountriesAPI] = useState<string[]>([]);
-  const navigate = useNavigate();
 
   const handleChange = (event: { target: HTMLInputElement }) => {
     if (event.target.checked) {
@@ -265,23 +264,32 @@ export const FilterPanel = () => {
             className={styleFilterPanel.btnClean}
             text={ButtonNames.clearFilter}
             appearance={ButtonStyleAppearance.pagination}
-            onClick={() => setFormState(getDefaultFormValues)}
-            disabled={isDisabledClearButton(formState)}
-          ></Button>
-          <Button
-            onClick={() =>
-              navigate(
-                `/searchResultFilter/${getRightRequest({
-                  request: formState
-                })}`,
-                { replace: false }
-              )
+            onClick={() => {
+              setFormState(getDefaultFormValues);
+              setIsChecked(true);
+              setIsCheckedSort(true);
+              setGenresAPI([]);
+            }}
+            disabled={
+              isDisabledClearButton(formState) && isChecked && isCheckedSort
             }
-            type="submit"
-            text={ButtonNames.showResult}
-            appearance={ButtonStyleAppearance.pagination}
-            disabled={Object.keys(formErrors).length > 0}
           ></Button>
+          <NavLink
+            to={`/searchResultFilter/${getRightRequest({
+              request: formState
+            })}`}
+            style={
+              Object.keys(formErrors).length > 0
+                ? {
+                    pointerEvents: 'none',
+                    color: '#ff5154',
+                    cursor: 'not-allowed'
+                  }
+                : { pointerEvents: 'auto' }
+            }
+          >
+            result
+          </NavLink>
         </div>
       </form>
     </div>
