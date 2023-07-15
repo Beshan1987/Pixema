@@ -16,7 +16,12 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
             key={card.id}
           >
             {getRatingLevel(card.rating.imdb) === 'low' && (
-              <span className={styleCard.rateLow}>{card.rating.imdb}</span>
+              <span
+                className={styleCard.rateLow}
+                key={card.rating.imdb}
+              >
+                {card.rating.imdb}
+              </span>
             )}
             {getRatingLevel(card.rating.imdb) === 'high' && (
               // <span className={styleCard.rateHigh}>{card.rating.imdb}</span>
@@ -39,7 +44,12 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
               </span>
             )}
             {getRatingLevel(card.rating.imdb) === 'superlow' && (
-              <span className={styleCard.rateSuperlow}>{card.rating.imdb}</span>
+              <span
+                className={styleCard.rateSuperlow}
+                key={card.rating.imdb}
+              >
+                {card.rating.imdb}
+              </span>
             )}
             <Link
               to={`/card/${card.id}`}
@@ -74,8 +84,12 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
             >
               {card.alternativeName && <div>{card.alternativeName}</div>}
               {card.name && <div>{card.name}</div>}
+              key={card.id}
             </Link>
-            <div className={styleCard.description}>
+            <div
+              className={styleCard.description}
+              key={card.year}
+            >
               {card.year}
               <div>{card.type}</div>
             </div>

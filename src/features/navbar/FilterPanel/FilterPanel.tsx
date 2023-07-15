@@ -6,6 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 
 import { type Countries, fetchGetCountries } from '~/api/fetchGetCountries';
 import { fetchGetGenres, type Genres } from '~/api/fetchGetGenres';
@@ -119,8 +120,13 @@ export const FilterPanel = () => {
     dispatch(switchFilterState());
   });
 
+  const handlers = useSwipeable({
+    onSwipedRight: () => dispatch(switchFilterState())
+  });
+
   return (
     <div
+      {...handlers}
       className={styleFilterPanel.container}
       data-open={isFilterState}
       ref={isFilterState ? reference : null}
