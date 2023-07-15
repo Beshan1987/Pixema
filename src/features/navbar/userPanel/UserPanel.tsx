@@ -1,12 +1,14 @@
 import { useState } from 'react';
 
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as Burger } from '~/assets/icons/burger.svg';
 import { ReactComponent as ChevronDown } from '~/assets/icons/chevronDown.svg';
 import { ReactComponent as ChevronRight } from '~/assets/icons/chevronRight.svg';
 import { ReactComponent as IconCancel } from '~/assets/icons/IconCancel.svg';
 import { ReactComponent as IconUser } from '~/assets/icons/IconUser.svg';
+import { useOutsideClick } from '~/features/CustomHooks/ClickOutSide';
 import { actions } from '~/features/states/userSlice/userSlice';
 import { Button } from '~/shared/Button/Button';
 import { ButtonStyleAppearance } from '~/shared/Button/Button.types';
@@ -29,11 +31,21 @@ export const PanelUser = () => {
       : null
   );
 
+  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
 
   const toggleBurger = () => {
     setIsOpenMenu((hasBeenOpened) => !hasBeenOpened);
   };
+
+  const reference = useOutsideClick(() => {
+    isOpenMenu ? null : toggleBurger();
+  });
+
+  const referenceUser = useOutsideClick(() => {
+    isOpenUserActionBar ? null : toggleUserBar();
+  });
 
   const toggleUserBar = () => {
     setIsOpenUserActionBar((hasBeenOpened) => !hasBeenOpened);
@@ -63,13 +75,17 @@ export const PanelUser = () => {
         makeOpen={toggleBurger}
         user={user}
         onLogOut={() => dispatch(actions.logout())}
+        reference={reference}
       />
-      <UserActionBar isOpen={isOpenUserActionBar} />
+      <UserActionBar
+        isOpen={isOpenUserActionBar}
+        referenUser={referenceUser}
+      />
     </>
   ) : (
     <>
       <div className={stylePanelUser.container}>
-        <div>
+        <div onClick={() => navigate('/signIn')}>
           <IconUser />
         </div>
 
@@ -91,8 +107,12 @@ export const PanelUser = () => {
         isOpen={isOpenMenu}
         makeOpen={toggleBurger}
         user={user}
+        reference={reference}
       />
-      <UserActionBar isOpen={isOpenUserActionBar} />
+      <UserActionBar
+        isOpen={isOpenUserActionBar}
+        referenUser={referenceUser}
+      />
     </>
   );
 };

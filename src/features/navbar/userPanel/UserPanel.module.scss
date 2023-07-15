@@ -12,6 +12,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .userNameWrapper {
     width: 50px;

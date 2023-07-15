@@ -1,3 +1,5 @@
+import { type RefObject } from 'react';
+
 import { Button } from '@mui/material';
 import classNames from 'classnames';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -17,17 +19,20 @@ export const Menu = ({
   isOpen,
   makeOpen,
   user,
-  onLogOut
+  onLogOut,
+  reference
 }: {
   appearance?: MenuStyleAppearance;
   isOpen?: boolean;
   makeOpen?: () => void;
   user: User | null;
   onLogOut?: () => void;
+  reference?: RefObject<HTMLDivElement>;
 }) => {
   const navigate = useNavigate();
   return (
     <div
+      ref={reference}
       data-open={isOpen}
       className={classNames({
         [menuStyle.desktop]: true,

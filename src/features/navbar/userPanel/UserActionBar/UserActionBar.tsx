@@ -1,3 +1,5 @@
+import { type RefObject } from 'react';
+
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +11,13 @@ import { useAppDispatch } from '~/store/store.types';
 import styleUserActionBar from './UserAction.module.scss';
 import { UserAction } from '../UserPanel.constant';
 
-export const UserActionBar = ({ isOpen }: { isOpen: boolean }) => {
+export const UserActionBar = ({
+  isOpen,
+  referenUser
+}: {
+  isOpen: boolean;
+  referenUser: RefObject<HTMLDivElement>;
+}) => {
   const user = useSelector((state: RootState) =>
     state.user.currentUser.status === 'success'
       ? state.user.currentUser.data
@@ -19,6 +27,7 @@ export const UserActionBar = ({ isOpen }: { isOpen: boolean }) => {
 
   return user ? (
     <div
+      ref={referenUser}
       className={styleUserActionBar.container}
       data-open={isOpen}
     >
@@ -33,6 +42,7 @@ export const UserActionBar = ({ isOpen }: { isOpen: boolean }) => {
     </div>
   ) : (
     <div
+      ref={referenUser}
       className={styleUserActionBar.container}
       data-open={isOpen}
     >

@@ -123,7 +123,7 @@ export const FilterPanel = () => {
     <div
       className={styleFilterPanel.container}
       data-open={isFilterState}
-      ref={reference}
+      ref={isFilterState ? reference : null}
     >
       <div className={styleFilterPanel.innerWrapper}>
         <p>Filters</p>
