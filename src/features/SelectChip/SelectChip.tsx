@@ -1,3 +1,5 @@
+import { type RefObject } from 'react';
+
 import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import FormControl from '@mui/material/FormControl';
@@ -35,16 +37,21 @@ function getStyles(
 export const MultipleSelectChip = ({
   countries,
   countriesAPI,
-  handleChange
+  handleChange,
+  reference
 }: {
   countries: Countries[];
   countriesAPI: string[];
   handleChange: (event: SelectChangeEvent<typeof countriesAPI>) => void;
+  reference: RefObject<HTMLDivElement>;
 }) => {
   const theme = useTheme();
 
   return (
-    <div>
+    <div
+      ref={reference}
+      id="wwwww"
+    >
       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-chip-label">Select Country</InputLabel>
         <Select

@@ -170,11 +170,15 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
               )}
             </div>
           </div>
-          {card.videos !== undefined && card.videos.trailers.length > 0 && (
+          {card.videos !== undefined && card.videos.trailers.length > 1 && (
             <>
               <h2>Trailer</h2>
               <iframe
-                src={card.videos.trailers[0].url}
+                src={
+                  card.videos.trailers.find((item) =>
+                    item.url.includes('youtube.com/embed/')
+                  )?.url
+                }
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 loading="lazy"

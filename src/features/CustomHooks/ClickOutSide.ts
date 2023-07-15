@@ -7,7 +7,8 @@ export const useOutsideClick = (callback: () => void) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         reference.current &&
-        !reference.current.contains(event.target as Node)
+        !reference.current.contains(event.target as Node) &&
+        !document.querySelector('#menu-')?.contains(event.target as Node)
       ) {
         callback();
       }
@@ -18,7 +19,7 @@ export const useOutsideClick = (callback: () => void) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [callback]);
+  }, [callback, reference]);
 
   return reference;
 };
