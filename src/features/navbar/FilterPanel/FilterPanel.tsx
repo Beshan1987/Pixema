@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 import { type Countries, fetchGetCountries } from '~/api/fetchGetCountries';
 import { fetchGetGenres, type Genres } from '~/api/fetchGetGenres';
 import { ReactComponent as IconCancel } from '~/assets/icons/IconCancel.svg';
+import { useOutsideClick } from '~/features/CustomHooks/ClickOutSide';
 import { MultipleSelectChip } from '~/features/SelectChip/SelectChip';
 import { switchFilterState } from '~/features/states/filterSlice/filterSlice';
 import { Button } from '~/shared/Button/Button';
@@ -114,10 +115,15 @@ export const FilterPanel = () => {
     } else setFormState({ ...formState, sortType: `${SortUpDown.sortDown}` });
   }, [isCheckedSort]);
 
+  const reference = useOutsideClick(() => {
+    dispatch(switchFilterState());
+  });
+
   return (
     <div
       className={styleFilterPanel.container}
       data-open={isFilterState}
+      ref={reference}
     >
       <div className={styleFilterPanel.innerWrapper}>
         <p>Filters</p>
