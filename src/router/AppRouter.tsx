@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { fetchUser } from '~/features/states/userSlice/user.api';
 import { MainLayout } from '~/layouts/mainLayout/MainLayout';
 import { CertainPage } from '~/pages/CertainPage/CertainPage';
+import { EditProfilePage } from '~/pages/EditProfilePage/EditProfilePage';
 import { FavoritiesPage } from '~/pages/FavoritiesPage/FavoritiesPage';
 import { MainPage } from '~/pages/MainPage/MainPage';
 import { SearchResultFilterPage } from '~/pages/SearchResultFilterPage/SearchResultFilterPage';
@@ -50,6 +51,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: '/searchResultFilter/:request',
         element: <SearchResultFilterPage />
+      },
+      {
+        path: '/EditProfile',
+        element: <EditProfilePage />
       }
     ]
   },

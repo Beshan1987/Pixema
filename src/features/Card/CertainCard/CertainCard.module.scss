@@ -158,6 +158,22 @@ iframe {
   height: 300px;
 }
 @media (max-width: 500px) {
+  .containerDescription {
+    .shorts {
+      gap: 10px;
+    }
+    .rating {
+      justify-content: center;
+    }
+    h1 {
+      font-size: 30px;
+      justify-content: center;
+      display: flex;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
   .wrapper .containerDescription button {
     width: 35%;
   }

@@ -84,7 +84,6 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
             >
               {card.alternativeName && <div>{card.alternativeName}</div>}
               {card.name && <div>{card.name}</div>}
-              key={card.id}
             </Link>
             <div
               className={styleCard.description}

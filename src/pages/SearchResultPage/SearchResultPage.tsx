@@ -14,7 +14,7 @@ import styleSearchPage from './SearchPage.module.scss';
 export const SearchResultPage = () => {
   const [card, setCard] = useState<CardAPI[]>([]);
   const [numberPage, setNumberPage] = useState<number>(1);
-  const [movieAll, setMovieAll] = useState<number>(1);
+  const [movieAll, setMovieAll] = useState<number>();
   const [error, setError] = useState('');
   const [searchParameters, setSearchParameters] = useSearchParams();
   const [page, setPage] = useState<number>(

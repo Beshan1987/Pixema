@@ -31,11 +31,13 @@ export const UserActionBar = ({
       className={styleUserActionBar.container}
       data-open={isOpen}
     >
-      <Link to="/edit ptofile">{UserAction['Edit profile']}</Link>
+      <Link to="/EditProfile">{UserAction['Edit profile']}</Link>
 
       <Button
         text={UserAction['log out']}
-        onClick={() => dispatch(actions.logout())}
+        onClick={() => {
+          dispatch(actions.logout());
+        }}
       >
         {' '}
       </Button>

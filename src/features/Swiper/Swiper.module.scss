@@ -43,4 +43,25 @@
     top: 25px !important;
     color: var(--primary-purple-second) !important;
   }
+
+  > div:nth-child(5) {
+    top: 15px;
+    left: calc(100% / 2 - 40% / 2);
+    width: 40%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background: var(--bg-graphite-pixema);
+    height: 20px;
+    align-items: center;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    a {
+      font-size: 16px;
+    }
+  }
 }

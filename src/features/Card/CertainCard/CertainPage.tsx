@@ -120,7 +120,7 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
                   </span>
                 </div>
               )}
-              {card.ageRating !== 0 && (
+              {card.ageRating !== 0 && card.ageRating !== null && (
                 <div>
                   <span>Age limit</span>
                   <span>{card.ageRating}+</span>
@@ -170,21 +170,24 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
               )}
             </div>
           </div>
-          {card.videos !== undefined && card.videos.trailers.length > 1 && (
-            <>
-              <h2>Trailer</h2>
-              <iframe
-                src={
-                  card.videos.trailers.find((item) =>
-                    item.url.includes('youtube.com/embed/')
-                  )?.url
-                }
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
-            </>
-          )}
+          {card.videos !== undefined &&
+            card.videos.trailers.find((item) =>
+              item.url.includes('youtube.com/embed/')
+            )?.url && (
+              <>
+                <h2>Trailer</h2>
+                <iframe
+                  src={
+                    card.videos.trailers.find((item) =>
+                      item.url.includes('youtube.com/embed/')
+                    )?.url
+                  }
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
+              </>
+            )}
           {card.similarMovies.length > 0 && (
             <>
               <h2>Recomendation</h2>

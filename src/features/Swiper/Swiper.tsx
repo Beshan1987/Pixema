@@ -17,8 +17,9 @@ export const SwiperCard = ({ card }: { card: CardAPI }) => {
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={30}
       slidesPerView={3}
+      pagination={card.similarMovies.length > 3 && { clickable: true }}
       navigation
-      scrollbar={{ draggable: true }}
+      scrollbar={card.similarMovies.length > 3 && { draggable: true }}
     >
       {card.similarMovies.map((card) => (
         <SwiperSlide
@@ -28,15 +29,18 @@ export const SwiperCard = ({ card }: { card: CardAPI }) => {
           {card.poster && (
             <div key={card.id}>
               <Link to={`/card/${card.id}`}>
-                <div>
-                  <img src={card.poster.url}></img>
+                <div key={card.id}>
+                  <img
+                    src={card.poster.url}
+                    key={card.poster.url}
+                  ></img>
                 </div>
               </Link>
               <Link to={`/card/${card.id}`}>
                 {card.alternativeName && <div>{card.alternativeName}</div>}
                 {card.name && <div>{card.name}</div>}
               </Link>
-              <div>{card.type}</div>
+              <div key={card.type}>{card.type}</div>
             </div>
           )}
         </SwiperSlide>

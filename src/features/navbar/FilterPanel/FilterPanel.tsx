@@ -116,14 +116,14 @@ export const FilterPanel = () => {
   }, [isCheckedSort]);
 
   const reference = useOutsideClick(() => {
-    dispatch(switchFilterState());
+    isFilterState ? dispatch(switchFilterState()) : null;
   });
 
   return (
     <div
       className={styleFilterPanel.container}
       data-open={isFilterState}
-      ref={isFilterState ? reference : null}
+      ref={reference}
     >
       <div className={styleFilterPanel.innerWrapper}>
         <p>Filters</p>
