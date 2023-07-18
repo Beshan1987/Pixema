@@ -48,6 +48,17 @@ export const MainPage = () => {
             text={'Show More'}
             disabled={numberPage === 1}
           />
+          <Button
+            appearance={ButtonStyleAppearance.system}
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+              })
+            }
+            text={'Back to top'}
+          />
         </div>
       </div>
     </>
