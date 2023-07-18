@@ -62,14 +62,10 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
               }}
             >
               <div>
-                {card.poster ? (
-                  <img
-                    src={card.poster.url}
-                    key={card.poster.url}
-                  ></img>
-                ) : (
-                  <img src="/src/assets/BG/NoPoster.jpeg"></img>
-                )}
+                <img
+                  src={card.poster.url}
+                  key={card.poster.url}
+                ></img>
               </div>
             </Link>
             <Link

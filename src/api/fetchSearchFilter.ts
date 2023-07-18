@@ -19,7 +19,7 @@ export async function fetchSearchFilter({
   const { data } = await axios<ResponseApiSearch>(
     `https://api.kinopoisk.dev/v1.3/movie?page=${page}&${request}&audience.count=${AmountViewsBlank}&selectFields=${cardRequestFields.join(
       ' '
-    )}`,
+    )}&poster.url=!null`,
     { headers }
   );
 

@@ -23,7 +23,9 @@ export async function fetchSearch({
   const { data } = await axios<ResponseApiSearch>(
     `https://api.kinopoisk.dev/v1.3/movie?$page=${page}}&audience.count=${AmountViewsBlank}&selectFields=${cardRequestFields.join(
       ' '
-    )}${isCyrillic(request) ? `&name=${request}` : `&enName=${request}`}`,
+    )}${
+      isCyrillic(request) ? `&name=${request}` : `&enName=${request}`
+    }&poster.url=!null`,
     { headers }
   );
 
