@@ -26,8 +26,8 @@ export const KeyAdmin = '123JCBS-NWP4J7K-G8E3WRF-VYBPZMZ';
 export const AmountViewsMovie = '500000-10000000';
 export const AmountViewsBlank = '1-1000000000';
 
-export const PeriodYearRealease = '2018-2023';
-export const RateIMBDTrend = '6.5-10';
+export const PeriodYearRealease = '2015-2023';
+export const RateIMBDTrend = '5-10';
 export const RateIMBDSMainPage = '7-10';
 export const AmountViewsMovieTrend = '1000000-1000000000';
 export const RateYear = '2022-2023';

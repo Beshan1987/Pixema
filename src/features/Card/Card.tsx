@@ -24,7 +24,6 @@ export const Card = ({ card }: { card: CardAPI[] }) => {
               </span>
             )}
             {getRatingLevel(card.rating.imdb) === 'high' && (
-              // <span className={styleCard.rateHigh}>{card.rating.imdb}</span>
               <span
                 key={card.rating.imdb}
                 className={
