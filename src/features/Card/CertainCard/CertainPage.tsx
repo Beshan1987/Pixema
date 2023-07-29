@@ -14,30 +14,18 @@ import styleCard from './CertainCard.module.scss';
 export const CertainCard = ({ card }: { card: CardAPI }) => {
   const navigate = useNavigate();
   const [isOpened, setOpened] = useState(false);
-  const [isFullActors, setIsFullActors] = useState(false);
   const [heightDescriptionBar, setHeightDescriptionBar] = useState(0);
-  const [heightActorsBar, setHeighActorsBar] = useState(0);
 
   const referenceComponent: React.RefObject<HTMLInputElement> = createRef();
-  const referenceComponentActor: React.RefObject<HTMLInputElement> =
-    createRef();
 
   useEffect(() => {
     setHeightDescriptionBar(
       (referenceComponent.current as HTMLElement).getBoundingClientRect().height
     );
-    setHeighActorsBar(
-      (referenceComponentActor.current as HTMLElement).getBoundingClientRect()
-        .height
-    );
   }, []);
 
   const toggleDescription = () => {
     setOpened((hasBeenOpened) => !hasBeenOpened);
-  };
-
-  const toggleActors = () => {
-    setIsFullActors((hasBeenOpened) => !hasBeenOpened);
   };
 
   return (
@@ -126,49 +114,13 @@ export const CertainCard = ({ card }: { card: CardAPI }) => {
                   <span>{card.ageRating}+</span>
                 </div>
               )}
-              {card.persons && (
-                <div>
-                  <span>Actors</span>
-                  <div className={styleCard.containerActorWrapper}>
-                    <div
-                      className={styleCard.containerActor}
-                      data-open={isFullActors}
-                      ref={referenceComponentActor}
-                      style={
-                        heightActorsBar > 180
-                          ? { maxHeight: '180px' }
-                          : { maxHeight: '100%' }
-                      }
-                    >
-                      {card.persons.map(
-                        (persons) =>
-                          persons.enProfession === 'actor' && (
-                            <div key={persons.id}>
-                              {persons.enName && <p>{persons.enName} </p>}
-                              {!persons.enName && <p>{persons.name} </p>}
-
-                              <div>
-                                <img
-                                  src={persons.photo}
-                                  alt={persons.name}
-                                />
-                              </div>
-                            </div>
-                          )
-                      )}
-                    </div>
-                    {heightActorsBar > 180 && (
-                      <Button
-                        onClick={() => toggleActors()}
-                        appearance={ButtonStyleAppearance.system}
-                        text={isFullActors ? 'close list' : null}
-                        icon={isFullActors ? null : <IconDown />}
-                      ></Button>
-                    )}
-                  </div>
-                </div>
-              )}
             </div>
+            <h2>Actors</h2>
+            {card.persons && (
+              <div className={styleCard.actors}>
+                <SwiperCard actor={card.persons} />
+              </div>
+            )}
           </div>
           {card.videos !== undefined &&
             card.videos.trailers.find((item) =>

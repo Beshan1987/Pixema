@@ -29,7 +29,7 @@ interface Budget {
   currency: string;
 }
 
-interface Persons {
+export interface Persons {
   id: number;
   photo: string;
   name: string;
