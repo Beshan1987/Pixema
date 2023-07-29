@@ -2,8 +2,8 @@
   display: flex;
   flex-flow: column;
 
-  min-width: 120px;
-  max-width: 300px;
+  min-width: 100px;
+  max-width: 120px;
   position: relative;
   div:first-child {
     img {
@@ -13,6 +13,7 @@
       margin-bottom: 24px;
     }
   }
+
   a {
     color: var(--text-color);
     font-size: 20px;

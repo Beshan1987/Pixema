@@ -34,9 +34,24 @@ export interface Persons {
   photo: string;
   name: string;
   enName: string;
-  description: string;
+  spouses: Spouses;
   profession: string;
   enProfession: string;
+  birthday: string;
+  age: number;
+  movies: SimilarMovies[];
+  facts: Facts[];
+}
+
+interface Facts {
+  value: string;
+}
+
+interface Spouses {
+  id: number;
+  name: string;
+  children: number;
+  relation: string;
 }
 
 export interface SimilarMovies {
@@ -46,6 +61,7 @@ export interface SimilarMovies {
   alternativeName: string;
   type: string;
   poster: Record<'url', string>;
+  rating: number;
 }
 
 interface Trailer {

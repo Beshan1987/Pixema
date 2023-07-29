@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -59,32 +60,37 @@ export const SwiperCard = ({
       className={styleSwiper.swiper}
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={30}
-      slidesPerView={3}
+      slidesPerView={5}
       pagination={actor.length > 3 && { clickable: true }}
       navigation
       scrollbar={actor.length > 3 && { draggable: true }}
     >
-      {actor.map((actor) => (
-        <SwiperSlide
-          className={styleSwiper.container}
-          key={actor.id}
-        >
-          <div key={actor.id}>
-            <Link to={`/actor/${actor.id}`}>
-              <div key={actor.id}>
-                <img
-                  src={actor.photo}
-                  key={actor.photo}
-                ></img>
-              </div>
-            </Link>
-            <Link to={`/actor/${actor.id}`}>
-              {actor.enName && <p>{actor.enName} </p>}
-              {!actor.enName && <p>{actor.name} </p>}
-            </Link>
-          </div>
-        </SwiperSlide>
-      ))}
+      {actor
+        .filter((actor) => actor.enProfession === 'actor')
+        .map((actor) => (
+          <SwiperSlide
+            className={classNames({
+              [styleSwiper.container]: true,
+              [styleSwiper.containerActors]: true
+            })}
+            key={actor.id}
+          >
+            <div key={actor.id}>
+              <Link to={`/actor/${actor.id}`}>
+                <div key={actor.id}>
+                  <img
+                    src={actor.photo}
+                    key={actor.photo}
+                  ></img>
+                </div>
+              </Link>
+              <Link to={`/actor/${actor.id}`}>
+                {actor.enName && <p>{actor.enName} </p>}
+                {!actor.enName && <p>{actor.name} </p>}
+              </Link>
+            </div>
+          </SwiperSlide>
+        ))}
     </Swiper>
   ) : null;
 };

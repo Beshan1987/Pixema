@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import { fetchUser } from '~/features/states/userSlice/user.api';
 import { MainLayout } from '~/layouts/mainLayout/MainLayout';
+import { ActorPage } from '~/pages/ActorPage/ActorPage';
 import { CertainPage } from '~/pages/CertainPage/CertainPage';
 import { EditProfilePage } from '~/pages/EditProfilePage/EditProfilePage';
 import { FavoritiesPage } from '~/pages/FavoritiesPage/FavoritiesPage';
@@ -55,6 +56,10 @@ export const routerSchema = createBrowserRouter([
       {
         path: '/EditProfile',
         element: <EditProfilePage />
+      },
+      {
+        path: '/actor/:id',
+        element: <ActorPage />
       }
     ]
   },
